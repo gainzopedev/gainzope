@@ -117,3 +117,5 @@ async function connectWithRetry() {
 }
 
 void connectWithRetry();
+
+export default app;
