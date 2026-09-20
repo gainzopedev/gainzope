@@ -1,0 +1,9 @@
+{
+  "name": "GAINZOPE",
+  "short_name": "GAINZOPE",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f5f4ee",
+  "theme_color": "#c8ff00",
+  "description": "A rewards platform for earning points and unlocking mobile recharge savings."
+}

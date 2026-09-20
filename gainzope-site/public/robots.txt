@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://gainzope.in/sitemap.xml

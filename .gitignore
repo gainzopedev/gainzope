@@ -1,0 +1,31 @@
+# Dependencies
+node_modules/
+**/node_modules/
+
+# Environment variables & secrets (CRITICAL FOR SECURITY)
+.env
+.env.*
+*.env
+**/.env
+**/.env.*
+!.env.example
+**/!(*.example).env
+secrets/*.json
+**/secrets/*.json
+
+# Build outputs
+dist/
+**/dist/
+build/
+**/build/
+
+# Cache & IDE
+.npm-cache/
+.kilo/
+.vscode/
+.idea/
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db

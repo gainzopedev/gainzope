@@ -1,0 +1,523 @@
+/* GAINZOPE Official Launch & Reward Updates Section (Section 12) */
+.subscribeSection {
+  padding: clamp(100px, 12vw, 150px) 0;
+  background: #090a07;
+  color: var(--paper);
+  border-top: 1px solid #20241a;
+  border-bottom: 1px solid #20241a;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Atmospheric Ambient Glow & Grid Matrix */
+.subscribeAura {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.auraCircle {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+}
+
+.auraOne {
+  top: -100px;
+  right: -80px;
+  width: 540px;
+  height: 540px;
+  background: radial-gradient(circle, rgba(200, 255, 0, 0.12) 0%, rgba(200, 255, 0, 0) 70%);
+}
+
+.auraTwo {
+  bottom: -120px;
+  left: 5%;
+  width: 480px;
+  height: 480px;
+  background: radial-gradient(circle, rgba(167, 214, 0, 0.07) 0%, rgba(167, 214, 0, 0) 70%);
+}
+
+.auraGridOverlay {
+  position: absolute;
+  inset: 0;
+  background-size: 36px 36px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black 20%, transparent 80%);
+}
+
+/* Main Layout Grid */
+.subscribeGrid {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1.12fr 0.88fr;
+  gap: clamp(40px, 6vw, 90px);
+  align-items: center;
+}
+
+/* Badge Row */
+.subscribeBadgeRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 22px;
+}
+
+.subscribeLivePill {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: rgba(200, 255, 0, 0.1);
+  border: 1px solid rgba(200, 255, 0, 0.35);
+  color: var(--lime);
+  font: 10px var(--mono);
+  letter-spacing: 0.12em;
+}
+
+.subscribePulseRing {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.subscribePulseDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--lime);
+  box-shadow: 0 0 10px var(--lime);
+  animation: radarPulse 2s infinite ease-in-out;
+}
+
+@keyframes radarPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.4);
+    opacity: 0.7;
+  }
+}
+
+.subscribeBuildTag {
+  font: 10px var(--mono);
+  color: #8c9085;
+  letter-spacing: 0.09em;
+}
+
+/* Typography */
+.subscribeTitle {
+  margin: 0 0 20px;
+  font-size: clamp(38px, 4.8vw, 68px);
+  line-height: 0.94;
+  letter-spacing: -0.065em;
+  color: var(--paper);
+}
+
+.subscribeTitle em {
+  display: block;
+  margin-top: 8px;
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.05em;
+  color: var(--lime);
+}
+
+.subscribeDesc {
+  max-width: 510px;
+  margin: 0 0 38px;
+  color: #a7aba0;
+  font-size: 15px;
+  line-height: 1.68;
+}
+
+/* Feature Pillars Spec Cards */
+.subscribePillars {
+  display: grid;
+  gap: 14px;
+}
+
+.subscribePillarItem {
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  gap: 18px;
+  align-items: center;
+  padding: 16px 18px;
+  background: rgba(22, 26, 19, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  backdrop-filter: blur(10px);
+  transition: border-color 0.25s, transform 0.2s, background 0.25s;
+}
+
+.subscribePillarItem:hover {
+  background: rgba(28, 33, 23, 0.9);
+  border-color: rgba(200, 255, 0, 0.35);
+  transform: translateX(4px);
+}
+
+.pillarIconWrap {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  background: #11140e;
+  border: 1px solid rgba(200, 255, 0, 0.25);
+  color: var(--lime);
+  font-size: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.pillarHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 4px;
+}
+
+.subscribePillarItem h3 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 750;
+  color: var(--paper);
+  letter-spacing: -0.02em;
+}
+
+.pillarTag {
+  font: 9px var(--mono);
+  color: var(--lime);
+  background: rgba(200, 255, 0, 0.08);
+  padding: 3px 8px;
+  border-radius: 4px;
+  border: 1px solid rgba(200, 255, 0, 0.2);
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+
+.subscribePillarItem p {
+  margin: 0;
+  color: #93978e;
+  font-size: 12.5px;
+  line-height: 1.55;
+}
+
+/* Interactive Card Terminal on Right */
+.subscribeBoxWrapper {
+  position: relative;
+}
+
+.subscribeBoxGlow {
+  position: absolute;
+  inset: -12px;
+  border-radius: 18px;
+  background: radial-gradient(circle at 50% 0%, rgba(200, 255, 0, 0.18), transparent 70%);
+  filter: blur(20px);
+  pointer-events: none;
+}
+
+.subscribeBox {
+  position: relative;
+  z-index: 1;
+  background: linear-gradient(160deg, #161912 0%, #0d0f0a 100%);
+  border: 1px solid rgba(200, 255, 0, 0.24);
+  border-radius: 12px;
+  padding: clamp(28px, 4vw, 44px);
+  box-shadow: 
+    0 24px 60px rgba(0, 0, 0, 0.6),
+    0 0 0 1px rgba(255, 255, 255, 0.04);
+}
+
+.subscribeBoxTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  margin-bottom: 24px;
+}
+
+.terminalStatus {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font: 10px var(--mono);
+  letter-spacing: 0.1em;
+  color: var(--lime);
+}
+
+.terminalDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--lime);
+  box-shadow: 0 0 8px var(--lime);
+}
+
+.terminalCode {
+  font: 9px var(--mono);
+  color: #8c9085;
+  letter-spacing: 0.08em;
+}
+
+.subscribeBoxHero h3 {
+  margin: 0 0 8px;
+  font-size: 24px;
+  letter-spacing: -0.04em;
+  color: var(--paper);
+}
+
+.subscribeBoxHero p {
+  margin: 0 0 26px;
+  color: #a4a89d;
+  font-size: 13.5px;
+  line-height: 1.6;
+}
+
+/* Launch Form */
+.launchForm {
+  display: grid;
+  gap: 16px;
+}
+
+.launchField {
+  display: grid;
+  gap: 8px;
+}
+
+.launchField label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font: 10px var(--mono);
+  color: #9da197;
+  letter-spacing: 0.08em;
+}
+
+.labelHint {
+  color: #72766d;
+  font-size: 9px;
+}
+
+.inputContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.inputIcon {
+  position: absolute;
+  left: 16px;
+  color: var(--lime);
+  font-size: 15px;
+  pointer-events: none;
+}
+
+.launchInput {
+  width: 100%;
+  background: #0a0c08;
+  border: 1px solid #2e3327;
+  border-radius: 6px;
+  color: #ffffff;
+  padding: 15px 16px 15px 44px;
+  font-size: 14.5px;
+  font-family: inherit;
+  outline: none;
+  transition: all 0.25s ease;
+}
+
+.launchInput:focus {
+  border-color: var(--lime);
+  box-shadow: 
+    0 0 0 3px rgba(200, 255, 0, 0.18),
+    0 0 16px rgba(200, 255, 0, 0.12);
+  background: #0f120a;
+}
+
+.launchInput::placeholder {
+  color: #55594f;
+}
+
+.launchSubmit {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background: var(--lime);
+  color: #0d0f0a;
+  border: 0;
+  border-radius: 6px;
+  padding: 16px 22px;
+  font-weight: 800;
+  font-size: 13.5px;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 8px 24px rgba(200, 255, 0, 0.22);
+}
+
+.launchSubmit:hover:not(:disabled) {
+  background: #d8ff33;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(200, 255, 0, 0.35);
+}
+
+.launchSubmit:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.launchTrustBanner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 6px;
+  color: #7b8074;
+  font: 10px var(--mono);
+  letter-spacing: 0.04em;
+  text-align: center;
+}
+
+.trustShield {
+  color: var(--lime);
+  font-weight: 800;
+}
+
+/* Success Confirmation Card */
+.launchSuccessCard {
+  background: #0d1009;
+  border: 1px solid rgba(200, 255, 0, 0.35);
+  border-radius: 8px;
+  padding: 26px 22px;
+  text-align: left;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+}
+
+.launchSuccessHeader {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.launchSuccessMark {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--lime);
+  color: #0d0f0a;
+  font-size: 18px;
+  font-weight: 900;
+  box-shadow: 0 0 16px rgba(200, 255, 0, 0.4);
+}
+
+.launchSuccessHeader h4 {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 750;
+  color: var(--paper);
+}
+
+.launchSuccessHeader small {
+  color: var(--lime);
+  font: 10px var(--mono);
+  letter-spacing: 0.06em;
+}
+
+.launchSuccessText {
+  margin: 0 0 16px;
+  color: #b1b5aa;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.launchSuccessMeta {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 4px;
+  background: rgba(200, 255, 0, 0.08);
+  border: 1px solid rgba(200, 255, 0, 0.2);
+  color: var(--lime);
+  font: 10px var(--mono);
+  letter-spacing: 0.08em;
+  margin-bottom: 18px;
+}
+
+.launchSuccessReset {
+  background: transparent;
+  border: 1px solid #33382c;
+  border-radius: 4px;
+  color: #a4a89d;
+  padding: 9px 15px;
+  font: 11px var(--mono);
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.launchSuccessReset:hover {
+  color: var(--lime);
+  border-color: var(--lime);
+}
+
+/* Error Message */
+.launchError {
+  margin: 14px 0 0;
+  padding: 10px 14px;
+  border-radius: 4px;
+  background: rgba(255, 68, 68, 0.1);
+  border: 1px solid rgba(255, 68, 68, 0.3);
+  color: #ff7575;
+  font: 11px var(--mono);
+  line-height: 1.5;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 980px) {
+  .subscribeGrid {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+  .subscribeDesc {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 720px) {
+  .subscribeSection {
+    padding: 80px 0;
+  }
+  .subscribeBox {
+    padding: 24px 20px;
+  }
+  .subscribePillarItem {
+    padding: 14px;
+  }
+  .pillarHead {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+  .launchTrustBanner {
+    flex-direction: column;
+    gap: 4px;
+  }
+}

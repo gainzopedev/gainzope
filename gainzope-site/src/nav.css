@@ -1,0 +1,516 @@
+.navWrap {
+  position: sticky !important;
+  top: 0 !important;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 1000 !important;
+  background: rgba(245, 244, 239, 0.96);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(16, 17, 14, 0.08);
+  transition: box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.navWrap .nav {
+  height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+}
+
+.navWrap.isScrolled {
+  box-shadow: 0 6px 20px rgba(16, 17, 14, 0.06);
+  border-bottom-color: rgba(16, 17, 14, 0.12);
+}
+
+.navWrap.isScrolled .logoMark {
+  box-shadow: 0 0 0 5px rgba(200, 255, 0, 0.22);
+}
+
+/* Brand Logo */
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none !important;
+  color: var(--ink);
+  font-size: 16px;
+  font-weight: 850;
+  letter-spacing: -0.04em;
+  flex-shrink: 0;
+}
+
+.logo:hover {
+  text-decoration: none !important;
+}
+
+.logoMark {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--lime);
+  box-shadow: 0 0 0 7px rgba(200, 255, 0, 0.16);
+  flex-shrink: 0;
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+.logoMark svg {
+  width: 22px;
+  height: 22px;
+  display: block;
+}
+
+.logo:hover .logoMark {
+  transform: scale(1.05);
+  box-shadow: 0 0 0 9px rgba(200, 255, 0, 0.25);
+}
+
+.logo span:last-child {
+  font-family: var(--sans);
+  font-weight: 850;
+  font-size: 16px;
+  letter-spacing: -0.04em;
+  color: #10110e;
+  text-decoration: none !important;
+}
+
+/* Crisp, Clean Desktop Navigation Links */
+.desktopNav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+}
+
+.desktopNav a {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 14px;
+  font-family: var(--sans);
+  font-size: 13.5px;
+  font-weight: 550;
+  letter-spacing: -0.01em;
+  color: #484b43;
+  text-decoration: none !important;
+  border-radius: 8px;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.desktopNav a:hover {
+  color: #10110e;
+  background: rgba(16, 17, 14, 0.05);
+}
+
+/* Navbar Action Buttons Container */
+.navActions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* 1. Get Launch Alert Button */
+.navAlertBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 11px 18px;
+  background: rgba(200, 255, 0, 0.2);
+  border: 1.5px solid rgba(167, 214, 0, 0.65);
+  border-radius: 6px;
+  color: #10110e;
+  font: 12px var(--mono);
+  letter-spacing: 0.04em;
+  font-weight: 700;
+  text-decoration: none !important;
+  transition: all 0.22s ease;
+  white-space: nowrap;
+}
+
+.navAlertBtn:hover {
+  background: var(--lime);
+  border-color: var(--lime);
+  color: var(--ink);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(200, 255, 0, 0.35);
+}
+
+.navAlertBtn .pulseDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #2e7d00;
+  box-shadow: 0 0 8px rgba(46, 125, 0, 0.85);
+  animation: navPulse 2s infinite ease-in-out;
+}
+
+@keyframes navPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.4);
+    opacity: 0.6;
+  }
+}
+
+/* 2. App Coming Soon CTA */
+.navCta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 22px;
+  background: var(--ink);
+  color: var(--paper);
+  border: 1px solid var(--ink);
+  border-radius: 6px;
+  font: 12px var(--mono);
+  letter-spacing: 0.04em;
+  font-weight: 700;
+  text-decoration: none !important;
+  transition: all 0.22s ease;
+  white-space: nowrap;
+}
+
+.navCta:hover {
+  background: #23251e;
+  border-color: #23251e;
+  color: var(--paper);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(16, 17, 14, 0.2);
+}
+
+.navCta:hover .arrowGlyph {
+  transform: translate(3px, -3px);
+}
+
+/* ==========================================================================
+   PREMIUM MOBILE MENU & HAMBURGER EXPERIENCE
+   ========================================================================== */
+
+/* Sleek Minimal Circular Toggle Button */
+.menuButton {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  width: 42px;
+  height: 42px;
+  margin-left: auto;
+  border-radius: 50% !important;
+  background: #11140e !important;
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+  position: relative;
+  z-index: 105;
+  outline: none;
+}
+
+.menuButton:hover {
+  background: #191d13 !important;
+  border-color: rgba(200, 255, 0, 0.4) !important;
+  transform: scale(1.05);
+}
+
+.menuButton span {
+  display: block;
+  width: 17px;
+  height: 2px;
+  border-radius: 2px;
+  background: #f5f4ef !important;
+  transition: transform 0.26s cubic-bezier(0.16, 1, 0.3, 1), background 0.2s, opacity 0.2s;
+  transform-origin: center;
+}
+
+/* Open State: morphs into a sleek lime 'X' without changing button shape */
+.menuButton.open {
+  background: #191d14 !important;
+  border-color: rgba(200, 255, 0, 0.55) !important;
+  box-shadow: 0 0 16px rgba(200, 255, 0, 0.25);
+}
+
+.menuButton.open span {
+  background: var(--lime) !important;
+}
+
+.menuButton.open span:first-child {
+  transform: translateY(3.5px) rotate(45deg);
+}
+
+.menuButton.open span:last-child {
+  transform: translateY(-3.5px) rotate(-45deg);
+}
+
+/* Luxury Full-Height Glassmorphic Drawer */
+.mobileMenu {
+  position: fixed !important;
+  top: 72px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: calc(100dvh - 72px);
+  z-index: 99 !important;
+  background: rgba(10, 12, 8, 0.96) !important;
+  backdrop-filter: blur(28px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(180%) !important;
+  border-top: 1px solid rgba(200, 255, 0, 0.22);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8) !important;
+  display: flex !important;
+  flex-direction: column;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.mobileMenuInner {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100%;
+  padding: 24px 20px 36px;
+  max-width: 520px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+  gap: 24px;
+}
+
+/* Top Hero Launch Card */
+.mobileAlertLink {
+  display: flex !important;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 16px 18px !important;
+  background: linear-gradient(135deg, rgba(200, 255, 0, 0.14) 0%, rgba(20, 24, 16, 0.9) 100%) !important;
+  border: 1px solid rgba(200, 255, 0, 0.35) !important;
+  border-radius: 10px !important;
+  text-decoration: none !important;
+  transition: all 0.25s ease;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+.mobileAlertLink:active,
+.mobileAlertLink:hover {
+  background: linear-gradient(135deg, rgba(200, 255, 0, 0.22) 0%, rgba(28, 33, 22, 0.95) 100%) !important;
+  border-color: var(--lime) !important;
+  transform: translateY(-1px);
+}
+
+.mobileAlertLeft {
+  display: grid;
+  gap: 4px;
+}
+
+.mobileAlertBadge {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font: 9px var(--mono);
+  color: var(--lime);
+  letter-spacing: 0.1em;
+}
+
+.mobileAlertDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--lime);
+  box-shadow: 0 0 8px var(--lime);
+  animation: navPulse 2s infinite ease-in-out;
+}
+
+.mobileAlertLeft strong {
+  font-size: 15.5px;
+  font-weight: 750;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+}
+
+.mobileAlertLeft small {
+  font-size: 12px;
+  color: #9ba095;
+}
+
+.mobileAlertArrow {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(200, 255, 0, 0.16);
+  color: var(--lime);
+  font-size: 15px;
+  flex-shrink: 0;
+  border: 1px solid rgba(200, 255, 0, 0.35);
+}
+
+/* Nav Links List */
+.mobileNavList {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.mobileNavItem {
+  display: flex !important;
+  align-items: center;
+  justify-content: space-between;
+  padding: 13px 16px !important;
+  border-radius: 8px;
+  border-bottom: 0 !important;
+  color: #e5e8df !important;
+  text-decoration: none !important;
+  transition: all 0.2s ease;
+}
+
+.mobileNavItem:hover,
+.mobileNavItem:active {
+  background: rgba(255, 255, 255, 0.06);
+  color: #ffffff !important;
+  transform: translateX(4px);
+}
+
+.mobileNavNum {
+  font: 11px var(--mono);
+  color: rgba(200, 255, 0, 0.7);
+  letter-spacing: 0.08em;
+  margin-right: 14px;
+}
+
+.mobileNavText {
+  flex: 1;
+  font-size: 17.5px;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+}
+
+.mobileNavItem .arrowGlyph {
+  color: #72766c !important;
+  font-size: 15px;
+  transition: transform 0.2s, color 0.2s;
+}
+
+.mobileNavItem:hover .arrowGlyph {
+  color: var(--lime) !important;
+  transform: translate(2px, -2px);
+}
+
+/* Bottom App Card & Micro Footer */
+.mobileMenuBottom {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.mobileAppLink {
+  display: flex !important;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px !important;
+  background: rgba(20, 24, 18, 0.85) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 10px !important;
+  color: #f5f4ef !important;
+  text-decoration: none !important;
+  transition: all 0.22s ease;
+}
+
+.mobileAppLink:hover {
+  background: rgba(28, 33, 24, 0.95) !important;
+  border-color: rgba(200, 255, 0, 0.35) !important;
+}
+
+.mobileAppIcon {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #090a07;
+  color: var(--lime);
+  border: 1px solid rgba(200, 255, 0, 0.35);
+  font-size: 16px;
+  font-weight: 900;
+  box-shadow: 0 0 12px rgba(200, 255, 0, 0.25);
+  flex-shrink: 0;
+}
+
+.mobileAppInfo {
+  flex: 1;
+  display: grid;
+  gap: 2px;
+}
+
+.mobileAppTitle {
+  font-size: 14px;
+  font-weight: 750;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+}
+
+.mobileAppStatus {
+  font: 9px var(--mono);
+  color: var(--lime);
+  letter-spacing: 0.08em;
+}
+
+.mobileAppLink .arrowGlyph {
+  color: var(--lime) !important;
+  font-size: 16px;
+}
+
+.mobileMenuFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 4px;
+  font: 10px var(--mono);
+  color: #757a6e;
+  letter-spacing: 0.05em;
+}
+
+.mobileMenuFooter a {
+  color: #aeb2a7;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.mobileMenuFooter a:hover {
+  color: var(--lime);
+}
+
+@media (max-width: 900px) {
+  .desktopNav {
+    display: none;
+  }
+}
+
+@media (max-width: 720px) {
+  .navWrap .nav {
+    height: 64px;
+  }
+  .navActions {
+    display: none;
+  }
+  .menuButton {
+    display: flex;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .navWrap {
+    transition: none !important;
+  }
+}
+

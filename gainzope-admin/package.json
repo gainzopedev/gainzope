@@ -1,0 +1,10 @@
+{
+  "name": "gainzope-admin",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "npx -y serve . -p 5174",
+    "start": "npx -y serve . -p 5174"
+  }
+}

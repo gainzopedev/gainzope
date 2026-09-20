@@ -1,0 +1,676 @@
+/* ==========================================================================
+   GAINZOPE ULTIMATE MULTI-DEVICE RESPONSIVE STYLESHEET
+   Supports: 320px - 360px (small phones), 375px - 430px (modern phones),
+             768px - 820px (tablets), and 1024px+ (desktops)
+   ========================================================================== */
+
+/* Global Clean Layout & Scroll Preservation */
+html {
+  /* Native consistent scroll velocity across all devices */
+}
+
+body {
+  position: relative;
+  overflow-x: clip;
+}
+
+#root {
+  width: 100%;
+  position: relative;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* Crisp Vector Icon Helpers */
+.arrowGlyph {
+  display: inline-block;
+  vertical-align: middle;
+  flex-shrink: 0;
+  transition: transform 0.25s ease;
+}
+
+.faqPlusIcon {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(200, 255, 0, 0.12);
+  color: var(--lime);
+  flex-shrink: 0;
+  transition: all 0.25s ease;
+}
+
+.faqItem button:hover .faqPlusIcon,
+.faqPlusIcon.isOpen {
+  background: var(--lime);
+  color: #10110e;
+  transform: scale(1.06);
+}
+
+.faqPlusIcon svg {
+  stroke: currentColor;
+}
+
+/* Tablet & Smaller Laptops (<= 980px) */
+@media (max-width: 980px) {
+  .shell {
+    width: calc(100% - 48px);
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 48px;
+    padding: 70px 0 80px;
+    min-height: auto;
+  }
+
+  .heroCopy {
+    text-align: center;
+  }
+
+  .hero .kicker {
+    justify-content: center;
+  }
+
+  .hero h1 {
+    max-width: 100%;
+    margin-inline: auto;
+  }
+
+  .heroText {
+    max-width: 580px;
+    margin-inline: auto;
+  }
+
+  .heroActions {
+    justify-content: center;
+  }
+
+  .heroFinePrint {
+    text-align: center;
+  }
+
+  .heroNote {
+    display: none !important;
+  }
+
+  .journey {
+    grid-template-columns: 1fr;
+    gap: 50px;
+    padding: 90px 0;
+  }
+
+  .sectionIntro.splitIntro {
+    display: block;
+    margin-bottom: 40px;
+  }
+
+  .splitIntro > p:last-child {
+    margin-top: 16px;
+    max-width: 100%;
+  }
+
+  .earnGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+
+  .referralGrid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .spinRecharge {
+    grid-template-columns: 1fr;
+  }
+
+  .valueGrid {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+
+  .rewardDestinations {
+    padding: 90px 0;
+  }
+
+  .destinationGrid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .rewardsGrid {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+
+  .rewardsSection {
+    padding: 90px 0;
+  }
+
+  .chooseGrid {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+
+  .trustHead {
+    display: block;
+    margin-bottom: 40px;
+  }
+
+  .trustHead > p {
+    margin-top: 16px;
+    max-width: 100%;
+  }
+
+  .trustGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .downloadGrid {
+    grid-template-columns: 1fr;
+    gap: 50px;
+    padding: 80px 0;
+  }
+
+  .faqGrid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding: 90px 0;
+  }
+
+  .footerLead {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .footerGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 36px;
+  }
+
+  .footerBrand {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Standard Mobile Devices (<= 720px) */
+@media (max-width: 720px) {
+  .shell {
+    width: calc(100% - 32px);
+  }
+
+  /* Typography scale */
+  h1 {
+    font-size: clamp(38px, 11vw, 62px) !important;
+    line-height: 0.95 !important;
+    letter-spacing: -0.05em !important;
+  }
+
+  h2 {
+    font-size: clamp(32px, 8.5vw, 48px) !important;
+    line-height: 0.98 !important;
+    letter-spacing: -0.04em !important;
+  }
+
+  /* Section Spacing */
+  .section,
+  .earnSection,
+  .rewardsSection,
+  .clarity,
+  .chooseSection,
+  .trustSection,
+  .downloadSection,
+  .faqSection {
+    padding: 72px 0 !important;
+  }
+
+  /* Hero Section Mobile */
+  .hero {
+    padding: 36px 0 54px !important;
+    gap: 36px;
+  }
+
+  .heroText {
+    font-size: 15px !important;
+    line-height: 1.6 !important;
+    margin-bottom: 24px;
+  }
+
+  .heroVisual {
+    min-height: 380px !important;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .orbitOne {
+    width: 300px !important;
+    height: 300px !important;
+  }
+
+  .orbitTwo {
+    width: 240px !important;
+    height: 240px !important;
+  }
+
+  .heroPhone {
+    width: min(240px, 75vw) !important;
+    box-shadow: 12px 14px 0 rgba(16, 17, 14, 0.12) !important;
+    transform: rotate(3deg) !important;
+  }
+
+  .phoneScreen {
+    min-height: auto !important;
+    padding: 24px 14px 14px !important;
+  }
+
+  .phoneHello strong {
+    font-size: 22px !important;
+  }
+
+  .balanceCard {
+    padding: 14px !important;
+  }
+
+  .balanceCard strong {
+    font-size: 28px !important;
+  }
+
+  /* Trust Strip */
+  .trustStrip {
+    overflow: hidden;
+  }
+
+  .trustStrip > div {
+    justify-content: center !important;
+    gap: 14px !important;
+    min-height: 54px !important;
+    font-size: 10px !important;
+    padding: 0 16px;
+  }
+
+  .trustStrip span:first-child,
+  .trustStrip span:last-child {
+    display: none !important;
+  }
+
+  /* Journey Step List */
+  .journeyRail {
+    border-top: 1px solid var(--line);
+  }
+
+  .journeyRail::before {
+    left: 48px !important;
+  }
+
+  .journeyStep {
+    grid-template-columns: 28px 18px 1fr 16px !important;
+    gap: 10px !important;
+    padding: 16px 0 !important;
+  }
+
+  .stepNumber {
+    font-size: 9px !important;
+  }
+
+  .stepMarker {
+    width: 18px !important;
+    height: 18px !important;
+  }
+
+  .stepMarker i {
+    width: 6px !important;
+    height: 6px !important;
+  }
+
+  .journeyStep h3 {
+    font-size: 15px !important;
+    margin-bottom: 3px !important;
+  }
+
+  .journeyStep p {
+    font-size: 12px !important;
+    line-height: 1.5 !important;
+  }
+
+  /* Ways to Earn Grid */
+  .earnGrid {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+
+  .earnCard {
+    min-height: auto !important;
+    padding: 18px !important;
+  }
+
+  .earnCard h3 {
+    margin: 28px 0 8px !important;
+    font-size: 17px !important;
+  }
+
+  /* Referral Section */
+  .referralSection {
+    padding: 72px 0 !important;
+  }
+
+  .referralSplit {
+    grid-template-columns: 1fr 1fr;
+    margin-top: 24px !important;
+  }
+
+  .referralSplit > div {
+    padding: 16px !important;
+  }
+
+  .referralSplit strong {
+    font-size: 24px !important;
+  }
+
+  .milestoneBoard {
+    padding: 20px 16px !important;
+    box-shadow: 8px 8px 0 rgba(201, 255, 0, 0.14) !important;
+  }
+
+  .milestoneRow {
+    padding: 16px 0 !important;
+    gap: 10px !important;
+  }
+
+  /* Spin and Recharge Cards */
+  .spinCard,
+  .rechargeCard {
+    min-height: auto !important;
+    padding: 28px 20px !important;
+  }
+
+  .spinDial {
+    margin: 24px 0 20px !important;
+    gap: 16px !important;
+  }
+
+  .spinDial > div {
+    width: 76px !important;
+    height: 76px !important;
+    box-shadow: 8px 8px 0 rgba(13, 14, 11, 0.2) !important;
+  }
+
+  .spinDial span {
+    font-size: 2.2rem !important;
+  }
+
+  .spinDial i {
+    font-size: 0.65rem !important;
+  }
+
+  .rechargeExample {
+    margin: 28px 0 16px !important;
+    padding: 16px !important;
+    gap: 8px !important;
+    font-size: 11px !important;
+  }
+
+  .rechargeExample b {
+    font-size: 1.15rem !important;
+  }
+
+  /* Value Machine */
+  .valueMachine {
+    padding: 16px !important;
+    margin-top: 32px !important;
+  }
+
+  .valueInput,
+  .valuePoints,
+  .valueToken {
+    padding: 14px !important;
+  }
+
+  .valuePoints strong {
+    font-size: 32px !important;
+  }
+
+  .valueToken {
+    grid-template-columns: 48px 1fr !important;
+    gap: 12px !important;
+  }
+
+  .valueToken > span {
+    width: 48px !important;
+    height: 48px !important;
+    font-size: 24px !important;
+  }
+
+  .valueToken strong {
+    font-size: 15px !important;
+  }
+
+  .valueDestinations {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 6px !important;
+  }
+
+  .valueDestinations span {
+    font-size: 10px !important;
+    padding: 6px 8px !important;
+  }
+
+  /* Wallet Preview */
+  .walletShell {
+    padding: 20px 16px !important;
+    box-shadow: 10px 12px 0 rgba(16, 17, 14, 0.1) !important;
+    transform: none !important;
+  }
+
+  .walletBalance {
+    padding: 24px 0 18px !important;
+  }
+
+  .walletBalance strong {
+    font-size: 42px !important;
+  }
+
+  /* Clarity Grid */
+  .clarityGrid {
+    grid-template-columns: 1fr !important;
+    border-left: 1px solid var(--line);
+  }
+
+  .clarityGrid article {
+    min-height: auto !important;
+    padding: 18px 16px !important;
+  }
+
+  .clarityGrid p {
+    margin: 20px 0 0 !important;
+    font-size: 15px !important;
+    max-width: 100% !important;
+  }
+
+  /* Choose Section Core */
+  .chooseVisual {
+    min-height: 340px !important;
+    margin-top: 36px !important;
+    overflow: hidden;
+  }
+
+  .haloOne {
+    width: 280px !important;
+    height: 280px !important;
+  }
+
+  .haloTwo {
+    width: 220px !important;
+    height: 220px !important;
+  }
+
+  .chooseCore {
+    width: 130px !important;
+    height: 130px !important;
+  }
+
+  .chooseCore span {
+    font-size: 60px !important;
+  }
+
+  .tagOne {
+    top: 32px !important;
+    left: 8px !important;
+    padding: 8px 10px !important;
+    font-size: 8px !important;
+  }
+
+  .tagTwo {
+    right: 8px !important;
+    bottom: 54px !important;
+    padding: 8px 10px !important;
+    font-size: 8px !important;
+  }
+
+  /* Trust Grid (Rules & Support) */
+  .trustGrid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .trustGrid a {
+    min-height: auto !important;
+    padding: 16px 14px !important;
+    grid-template-columns: 24px 1fr 16px !important;
+    gap: 10px !important;
+  }
+
+  /* Download Section */
+  .downloadSection h2 {
+    font-size: clamp(36px, 9vw, 54px) !important;
+  }
+
+  .comingButton {
+    width: 100% !important;
+    justify-content: space-between !important;
+    margin-top: 24px !important;
+    padding: 14px 16px !important;
+  }
+
+  .downloadVisual {
+    min-height: 260px !important;
+    margin-top: 28px !important;
+  }
+
+  .downloadCoin {
+    width: 110px !important;
+    height: 110px !important;
+    font-size: 52px !important;
+    box-shadow: 10px 12px 0 rgba(16, 17, 14, 0.16) !important;
+  }
+
+  .downloadRings div:first-child {
+    width: 240px !important;
+    height: 240px !important;
+  }
+
+  .downloadRings div:last-child {
+    width: 190px !important;
+    height: 190px !important;
+  }
+
+  /* FAQ Accordion */
+  .faqItem button {
+    padding: 16px 0 !important;
+    font-size: 14px !important;
+  }
+
+  /* Footer */
+  .footerLead {
+    padding: 50px 0 36px !important;
+  }
+
+  .footerLeadSide {
+    margin-top: 24px !important;
+  }
+
+  .footerGrid {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+    padding: 40px 0 !important;
+  }
+
+  .footerBottom {
+    min-height: 80px !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    justify-content: center !important;
+    gap: 6px !important;
+    padding: 16px 0 !important;
+    font-size: 10px !important;
+  }
+}
+
+/* Narrow Screens (<= 420px: iPhone SE, Galaxy, Pixel) */
+@media (max-width: 420px) {
+  .shell {
+    width: calc(100% - 24px);
+  }
+
+  .heroActions {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 12px !important;
+  }
+
+  .primaryButton {
+    width: 100% !important;
+    justify-content: center !important;
+    padding: 16px !important;
+  }
+
+  .textButton {
+    width: 100% !important;
+    justify-content: center !important;
+    padding: 8px 0 !important;
+  }
+
+  .referralSplit {
+    grid-template-columns: 1fr !important;
+  }
+
+  .rechargeExample {
+    grid-template-columns: 1fr auto 1fr !important;
+    gap: 8px !important;
+  }
+
+  .rechargeExample > span:nth-of-type(2),
+  .rechargeExample .finalRecharge {
+    grid-row: 2;
+  }
+
+  .rechargeExample > span:nth-of-type(2) {
+    grid-column: 1;
+  }
+
+  .rechargeExample .finalRecharge {
+    grid-column: 2 / -1;
+    margin: 0 !important;
+  }
+
+  .footerEmailForm {
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+
+  .footerEmailForm input {
+    width: 100% !important;
+  }
+}
+
+/* Reduced Motion Override */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

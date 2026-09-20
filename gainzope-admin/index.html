@@ -1,0 +1,483 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex,nofollow" />
+  <title>GAINZOPE — Pro Admin Console & Analytics</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./styles.css" />
+  <link rel="stylesheet" href="./preview.css" />
+</head>
+<body>
+
+<!-- Login View -->
+<main id="login-view" class="login-view">
+  <section class="login-card">
+    <div class="login-header">
+      <a class="brand" href="#">
+        <span class="brand-mark">G</span>
+        <span class="brand-title">GAINZOPE</span>
+        <span class="brand-pill">ADMIN</span>
+      </a>
+      <h1>Welcome back</h1>
+      <p class="muted">Sign in with authorized administrator credentials to manage traffic, subscribers, and broadcasts.</p>
+    </div>
+    <form id="login-form">
+      <label>ADMIN EMAIL
+        <input id="email" type="email" autocomplete="email" placeholder="imsunil018@gmail.com" value="imsunil018@gmail.com" required />
+      </label>
+      <label>PASSWORD
+        <input id="password" type="password" autocomplete="current-password" placeholder="••••••••••••" value="VK@2712@67ff" required />
+      </label>
+      <button id="login-button" type="submit" class="primary-button">Sign In to Console <span>→</span></button>
+      <p id="login-message" class="form-message" aria-live="polite"></p>
+    </form>
+    <div class="login-footer">
+      <span>Protected by Firebase Auth & MongoDB Atlas</span>
+    </div>
+  </section>
+</main>
+
+<!-- Authenticated Dashboard View -->
+<main id="admin-view" class="admin-view" hidden>
+  <!-- Main Top Bar -->
+  <header class="admin-header">
+    <div class="header-left">
+      <a class="brand" href="#">
+        <span class="brand-mark">G</span>
+        <span class="brand-title">GAINZOPE</span>
+        <span class="brand-pill">PRO CONSOLE</span>
+      </a>
+
+      <div class="sys-status" title="Real-time MongoDB and backend connection">
+        <span class="status-dot online"></span>
+        <span id="backend-status-text">Backend Live (Port 4000)</span>
+      </div>
+    </div>
+
+    <!-- Navigation Tabs -->
+    <nav class="nav-tabs" id="admin-nav-tabs">
+      <button class="nav-tab active" data-tab="analytics" id="tab-btn-analytics">
+        <svg viewBox="0 0 20 20" width="16" height="16" fill="currentColor"><path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"/><path d="M12 2.25A8.004 8.004 0 0119.75 10H12V2.25z"/></svg>
+        <span>Overview & Traffic</span>
+      </button>
+      <button class="nav-tab" data-tab="subscribers" id="tab-btn-subscribers">
+        <svg viewBox="0 0 20 20" width="16" height="16" fill="currentColor"><path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z"/></svg>
+        <span>Subscribers</span>
+        <span class="nav-badge" id="nav-subs-count">0</span>
+      </button>
+      <button class="nav-tab" data-tab="campaigns" id="tab-btn-campaigns">
+        <svg viewBox="0 0 20 20" width="16" height="16" fill="currentColor"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg>
+        <span>Email Broadcasts</span>
+      </button>
+      <button class="nav-tab" data-tab="system" id="tab-btn-system">
+        <svg viewBox="0 0 20 20" width="16" height="16" fill="currentColor"><path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"/></svg>
+        <span>System & API</span>
+      </button>
+    </nav>
+
+    <div class="header-right">
+      <a href="http://localhost:5173" target="_blank" rel="noreferrer" class="site-link-btn" title="Open GAINZOPE Main Website">
+        <span>Visit Site</span>
+        <svg viewBox="0 0 16 16" width="12" height="12" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 13L13 3m0 0H6m7 0v7"/></svg>
+      </a>
+
+      <button id="refresh-subscribers" class="icon-btn" title="Refresh Live Data">
+        <svg viewBox="0 0 20 20" width="16" height="16" fill="currentColor"><path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd"/></svg>
+      </button>
+
+      <div class="user-pill">
+        <span class="user-dot"></span>
+        <span id="admin-email">admin</span>
+      </div>
+
+      <button id="sign-out" class="sign-out-btn" title="Sign out">
+        <svg viewBox="0 0 20 20" width="15" height="15" fill="currentColor"><path fill-rule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 001 1h12a1 1 0 001-1V4a1 1 0 00-1-1H3zm11 4a1 1 0 10-2 0v2H7a1 1 0 100 2h5v2a1 1 0 102 0V7z" clip-rule="evenodd"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <div class="admin-main">
+    <!-- TAB 1: OVERVIEW & TRAFFIC ANALYTICS -->
+    <section id="tab-content-analytics" class="tab-pane active">
+      <div class="page-lead">
+        <div>
+          <p class="eyebrow">REAL-TIME TRAFFIC & ACQUISITION METRICS</p>
+          <h1 class="page-title">Website Performance & Growth</h1>
+          <p class="page-desc">Live analytics tracking visits, unique visitor conversion, and subscriber growth across GAINZOPE platforms.</p>
+        </div>
+        <div class="lead-actions">
+          <span class="live-indicator"><span class="pulse-ring"></span> Live Monitoring</span>
+          <span class="clock-badge" id="live-clock">—:— IST</span>
+        </div>
+      </div>
+
+      <!-- 4 Top KPI Cards -->
+      <div class="metric-grid">
+        <!-- Card 1: Traffic -->
+        <article class="metric-card accent">
+          <div class="card-head">
+            <span class="metric-label">WEBSITE TRAFFIC</span>
+            <span class="metric-icon-badge lime">
+              <svg viewBox="0 0 20 20" width="16" height="16" fill="currentColor"><path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/><path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"/></svg>
+            </span>
+          </div>
+          <div class="metric-num" id="total-pageviews">—</div>
+          <div class="metric-tags">
+            <span class="tag-pill cyan" id="unique-visitors-badge">Unique: —</span>
+            <span class="tag-pill lime" id="today-visits-badge">Today: +—</span>
+          </div>
+          <small class="metric-sub">Total pageviews tracked from real visitors</small>
+        </article>
+
+        <!-- Card 2: Waitlist Leads -->
+        <article class="metric-card">
+          <div class="card-head">
+            <span class="metric-label">TOTAL AUDIENCE</span>
+            <span class="metric-icon-badge green">
+              <svg viewBox="0 0 20 20" width="16" height="16" fill="currentColor"><path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z"/></svg>
+            </span>
+          </div>
+          <div class="metric-num" id="subscriber-total">—</div>
+          <div class="metric-tags">
+            <span class="tag-pill" id="launch-subscriber-total">Launch: —</span>
+            <span class="tag-pill" id="footer-subscriber-total">Footer: —</span>
+          </div>
+          <small class="metric-sub">Active email waitlist registrations in MongoDB</small>
+        </article>
+
+        <!-- Card 3: Conversion Rate -->
+        <article class="metric-card">
+          <div class="card-head">
+            <span class="metric-label">VISITOR CONVERSION</span>
+            <span class="metric-icon-badge amber">
+              <svg viewBox="0 0 20 20" width="16" height="16" fill="currentColor"><path fill-rule="evenodd" d="M12 7a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0V8.414l-4.293 4.293a1 1 0 01-1.414 0L8 10.414l-4.293 4.293a1 1 0 01-1.414-1.414l5-5a1 1 0 011.414 0L11 10.586 14.586 7H12z" clip-rule="evenodd"/></svg>
+            </span>
+          </div>
+          <div class="metric-num" id="conversion-rate-value">—%</div>
+          <div class="progress-track">
+            <div class="progress-bar" id="conversion-rate-bar" style="width: 0%"></div>
+          </div>
+          <small class="metric-sub">Ratio of unique site visitors who subscribed</small>
+        </article>
+
+        <!-- Card 4: Campaigns -->
+        <article class="metric-card">
+          <div class="card-head">
+            <span class="metric-label">EMAIL CAMPAIGNS</span>
+            <span class="metric-icon-badge purple">
+              <svg viewBox="0 0 20 20" width="16" height="16" fill="currentColor"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg>
+            </span>
+          </div>
+          <div class="metric-num" id="last-campaign">—</div>
+          <div class="metric-tags">
+            <span class="tag-pill" id="last-campaign-detail">No broadcast sent</span>
+          </div>
+          <small class="metric-sub">Broadcasts dispatched via Resend Engine</small>
+        </article>
+      </div>
+
+      <!-- Traffic & Growth Interactive Chart Section -->
+      <section class="chart-panel">
+        <div class="chart-header">
+          <div>
+            <p class="eyebrow">14-DAY TRAFFIC & ENGAGEMENT</p>
+            <h2 class="section-title">Visitor Activity vs Subscriber Growth</h2>
+          </div>
+          <div class="chart-legend">
+            <span class="legend-item"><span class="legend-dot cyan"></span> Website Visits</span>
+            <span class="legend-item"><span class="legend-dot lime"></span> Unique Visitors</span>
+            <span class="legend-item"><span class="legend-dot green"></span> Waitlist Signups</span>
+          </div>
+        </div>
+        <div class="chart-wrap" id="traffic-chart-container">
+          <div class="chart-placeholder">Loading interactive analytics chart…</div>
+        </div>
+      </section>
+
+      <!-- Distribution & Device Insights Row -->
+      <div class="insights-grid">
+        <article class="insight-card">
+          <div class="insight-head">
+            <div>
+              <p class="eyebrow">AUDIENCE PLATFORM</p>
+              <h3>Device Distribution</h3>
+            </div>
+            <span class="tag-pill">User Agent</span>
+          </div>
+          <div class="device-bars">
+            <div class="device-stat">
+              <div class="device-info">
+                <span>📱 Mobile Users</span>
+                <b id="device-mobile-pct">0%</b>
+              </div>
+              <div class="progress-track"><div class="progress-bar mobile-bar" id="device-bar-mobile" style="width:0%"></div></div>
+            </div>
+            <div class="device-stat">
+              <div class="device-info">
+                <span>💻 Desktop / Laptop</span>
+                <b id="device-desktop-pct">0%</b>
+              </div>
+              <div class="progress-track"><div class="progress-bar desktop-bar" id="device-bar-desktop" style="width:0%"></div></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="insight-card">
+          <div class="insight-head">
+            <div>
+              <p class="eyebrow">TRAFFIC CHANNELS</p>
+              <h3>Top Referrers & Discovery</h3>
+            </div>
+            <span class="tag-pill">Origin</span>
+          </div>
+          <div class="referrers-list" id="referrers-list">
+            <div class="ref-row"><span>Direct Navigation</span><b>100%</b></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- TAB 2: SUBSCRIBERS AUDIENCE -->
+    <section id="tab-content-subscribers" class="tab-pane" hidden>
+      <div class="page-lead">
+        <div>
+          <p class="eyebrow">AUDIENCE MANAGEMENT</p>
+          <h1 class="page-title">Registered Subscribers</h1>
+          <p class="page-desc">Verified waitlist records collected from the website hero launch alert and footer subscription forms.</p>
+        </div>
+        <div class="lead-actions">
+          <button id="export-subscribers" class="secondary-button" type="button">
+            <svg viewBox="0 0 20 20" width="15" height="15" fill="currentColor"><path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+            <span>Export CSV</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Subscribers Table Panel -->
+      <section class="subscriber-panel">
+        <div class="panel-controls">
+          <div class="filter-tabs" id="filter-tabs">
+            <button class="filter-tab active" data-filter="all">All <span class="tab-badge" id="badge-all">0</span></button>
+            <button class="filter-tab" data-filter="launch">Launch Alerts <span class="tab-badge" id="badge-launch">0</span></button>
+            <button class="filter-tab" data-filter="footer">Website Footer <span class="tab-badge" id="badge-footer">0</span></button>
+          </div>
+
+          <div class="search-box">
+            <svg viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="8" cy="8" r="6"/><path d="M12.5 12.5L17 17"/></svg>
+            <input id="subscriber-search" type="search" placeholder="Search subscribers by email address…" />
+          </div>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Subscriber Email</th>
+                <th>Channel Source</th>
+                <th>Registration Date</th>
+                <th>Account Status</th>
+                <th>Quick Actions</th>
+              </tr>
+            </thead>
+            <tbody id="subscriber-list">
+              <tr><td colspan="5" class="table-empty">Loading verified subscribers…</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p id="subscriber-message" class="form-message" aria-live="polite"></p>
+      </section>
+    </section>
+
+    <!-- TAB 3: EMAIL CAMPAIGNS -->
+    <section id="tab-content-campaigns" class="tab-pane" hidden>
+      <div class="page-lead">
+        <div>
+          <p class="eyebrow">OUTREACH & NOTIFICATIONS</p>
+          <h1 class="page-title">Email Broadcast Studio</h1>
+          <p class="page-desc">Draft and broadcast announcement updates, Google Play download links, and reward releases to all active subscribers.</p>
+        </div>
+      </div>
+
+      <!-- Campaign Section -->
+      <section class="campaign-layout">
+        <form id="campaign-form" class="composer-card">
+          <div class="card-title">
+            <div>
+              <p class="eyebrow">NEW CAMPAIGN</p>
+              <h2>Broadcast Composer</h2>
+            </div>
+            <span class="brand-pill">RESEND ENGINE</span>
+          </div>
+
+          <label>SUBJECT LINE
+            <input id="campaign-subject" type="text" placeholder="GAINZOPE Android App is Live on Google Play!" required />
+          </label>
+
+          <label>PREVIEW INBOX SNIPPET
+            <input id="campaign-preview" type="text" placeholder="Download now and claim your first 150 bonus tokens." />
+          </label>
+
+          <label>EMAIL BODY (MARKDOWN / TEXT)
+            <textarea id="campaign-content" rows="7" placeholder="Write your announcement message here. Paragraph breaks are formatted automatically for email inboxes." required></textarea>
+          </label>
+
+          <div class="test-send-group">
+            <label>SEND QUICK TEST
+              <div class="test-input-row">
+                <input id="test-email" type="email" placeholder="test@gainzope.in" value="imsunil018@gmail.com" />
+                <button id="send-test" class="secondary-button" type="button">Send Test</button>
+              </div>
+            </label>
+          </div>
+
+          <div class="composer-actions">
+            <button id="send-campaign" class="primary-button" type="submit">
+              <span>Broadcast to All Subscribers</span>
+              <svg viewBox="0 0 20 20" width="16" height="16" fill="currentColor"><path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z"/></svg>
+            </button>
+            <p id="campaign-message" class="form-message" aria-live="polite"></p>
+          </div>
+        </form>
+
+        <!-- Live Email Inbox Preview -->
+        <aside class="email-preview-card">
+          <div class="preview-head">
+            <span>LIVE EMAIL CLIENT PREVIEW</span>
+            <i>INBOX SIMULATOR</i>
+          </div>
+
+          <div class="inbox-card">
+            <div class="inbox-from">
+              <span class="mini-mark">G</span>
+              <div>
+                <b>GAINZOPE &lt;updates@gainzope.in&gt;</b>
+                <small>to Subscriber Audience</small>
+              </div>
+              <time>Just now</time>
+            </div>
+            <strong id="preview-subject">GAINZOPE Android App is Live!</strong>
+            <p id="preview-text">Download now and start saving on mobile recharge.</p>
+
+            <div class="mail-sheet">
+              <div class="mail-brand">GAINZOPE</div>
+              <h3 id="preview-heading">GAINZOPE Android App is Live!</h3>
+              <p id="preview-content">Write your message on the left to see how the email will read in subscriber inboxes.</p>
+              <span class="preview-line"></span>
+              <small>You are receiving this official notification because you joined the GAINZOPE waitlist at gainzope.in.</small>
+            </div>
+          </div>
+          <p class="preview-note">✓ Responsive HTML markup with anti-clipping preview text included automatically.</p>
+        </aside>
+      </section>
+
+      <!-- Send History -->
+      <section class="history-panel">
+        <div class="panel-header-simple">
+          <div>
+            <p class="eyebrow">DISPATCH LOGS</p>
+            <h2>Campaign Broadcast History</h2>
+          </div>
+        </div>
+        <div id="campaign-history" class="history-list">
+          <p class="muted">Loading campaign history…</p>
+        </div>
+      </section>
+    </section>
+
+    <!-- TAB 4: SYSTEM HEALTH & CONFIG -->
+    <section id="tab-content-system" class="tab-pane" hidden>
+      <div class="page-lead">
+        <div>
+          <p class="eyebrow">INFRASTRUCTURE STATUS</p>
+          <h1 class="page-title">System Health & API Diagnostics</h1>
+          <p class="page-desc">Live status of backend services, database clusters, authentication, and email delivery providers.</p>
+        </div>
+      </div>
+
+      <div class="system-grid">
+        <article class="system-card">
+          <div class="sys-card-head">
+            <div class="sys-title-group">
+              <span class="sys-icon mongo">🍃</span>
+              <div>
+                <h3>MongoDB Atlas Database</h3>
+                <small>Cluster: cluster0.3xhbdc2.mongodb.net</small>
+              </div>
+            </div>
+            <span class="tag-pill lime" id="sys-db-status">Connected</span>
+          </div>
+          <div class="sys-meta">
+            <div class="meta-row"><span>Collections:</span><b>waitlistSubscribers, pageVisits, emailCampaigns</b></div>
+            <div class="meta-row"><span>Indexes:</span><b>Unique Email, SessionId, Date Created</b></div>
+            <div class="meta-row"><span>SRV DNS:</span><b>Google DNS (8.8.8.8) Fallback Active</b></div>
+          </div>
+        </article>
+
+        <article class="system-card">
+          <div class="sys-card-head">
+            <div class="sys-title-group">
+              <span class="sys-icon firebase">🔥</span>
+              <div>
+                <h3>Firebase Authentication</h3>
+                <small>Project: gainzope-c579f</small>
+              </div>
+            </div>
+            <span class="tag-pill lime">Active</span>
+          </div>
+          <div class="sys-meta">
+            <div class="meta-row"><span>Client Web SDK:</span><b>v12.18.0 (ES Modules)</b></div>
+            <div class="meta-row"><span>Auth Domain:</span><b>gainzope-c579f.firebaseapp.com</b></div>
+            <div class="meta-row"><span>Role Security:</span><b>ADMIN_EMAILS Verified</b></div>
+          </div>
+        </article>
+
+        <article class="system-card">
+          <div class="sys-card-head">
+            <div class="sys-title-group">
+              <span class="sys-icon resend">✉️</span>
+              <div>
+                <h3>Resend Email Dispatcher</h3>
+                <small>API Key: Configured (re_YmjD...)</small>
+              </div>
+            </div>
+            <span class="tag-pill cyan">Integrated</span>
+          </div>
+          <div class="sys-meta">
+            <div class="meta-row"><span>Sender Address:</span><b>GAINZOPE &lt;updates@gainzope.in&gt;</b></div>
+            <div class="meta-row"><span>Domain Status:</span><b>Pending WHOIS Verification on GoDaddy</b></div>
+            <div class="meta-row"><span>Delivery Mode:</span><b>Batch Dispatch (100 emails/chunk)</b></div>
+          </div>
+        </article>
+
+        <article class="system-card">
+          <div class="sys-card-head">
+            <div class="sys-title-group">
+              <span class="sys-icon node">⚡</span>
+              <div>
+                <h3>Express API Server</h3>
+                <small>Environment: Development (Node v24)</small>
+              </div>
+            </div>
+            <span class="tag-pill lime">Port 4000</span>
+          </div>
+          <div class="sys-meta">
+            <div class="meta-row"><span>Rate Limiter:</span><b>120 req/15m (Visits) · 10 req/1h (Waitlist)</b></div>
+            <div class="meta-row"><span>Security:</span><b>Helmet HTTP Headers Active</b></div>
+            <div class="meta-row"><span>CORS Allowed:</span><b>localhost:5173, localhost:5174</b></div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </div>
+</main>
+
+<!-- Toast Notification Container -->
+<div id="toast-container" class="toast-container"></div>
+
+<script type="module" src="./app.js"></script>
+</body>
+</html>
