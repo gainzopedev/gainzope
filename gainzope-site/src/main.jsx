@@ -6,11 +6,11 @@ import './footer.css';
 import './download.css';
 import './choose.css';
 import './rewards.css';
-import './mobile.css';
 import './nav.css';
 import './product-details.css';
 import './performance.css';
 import './subscribe.css';
+import './mobile.css';
 
 const navLinks = [
   ['Home', '#top'],
@@ -81,8 +81,51 @@ function Reveal({ children, className = '', delay = 0 }) {
 
 function MotionTitle({ title, accent, className = '' }) {
   const reduceMotion = useReducedMotion();
-  const words = `${title} ${accent}`.split(' ');
-  return <h2 className={`motionTitle ${className}`} aria-label={`${title} ${accent}`}>{words.map((word, index) => <motion.span key={`${word}-${index}`} aria-hidden="true" initial={reduceMotion ? false : { opacity: 0, y: 54, rotate: index % 2 ? 2 : -2 }} whileInView={{ opacity: 1, y: 0, rotate: 0 }} viewport={{ once: true, amount: .85 }} transition={{ duration: .56, delay: index * .055, ease: [0.16, 1, 0.3, 1] }} className={index >= title.split(' ').length ? 'motionWord accentWord' : 'motionWord'}>{word}{index === title.split(' ').length - 1 ? <br /> : ' '}</motion.span>)}</h2>;
+  const titleWords = title.split(' ');
+  const accentWords = accent ? accent.split(' ') : [];
+  return (
+    <h2 className={`motionTitle ${className}`} aria-label={`${title} ${accent || ''}`}>
+      <span className="titleLine">
+        {titleWords.map((word, index) => (
+          <React.Fragment key={`t-${word}-${index}`}>
+            <motion.span
+              aria-hidden="true"
+              initial={reduceMotion ? false : { opacity: 0, y: 36 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.8 }}
+              transition={{ duration: 0.45, delay: index * 0.05, ease: [0.16, 1, 0.3, 1] }}
+              className="motionWord"
+            >
+              {word}
+            </motion.span>
+            {index < titleWords.length - 1 ? ' ' : ''}
+          </React.Fragment>
+        ))}
+      </span>
+      {accent && (
+        <>
+          <br />
+          <span className="accentLine">
+            {accentWords.map((word, index) => (
+              <React.Fragment key={`a-${word}-${index}`}>
+                <motion.span
+                  aria-hidden="true"
+                  initial={reduceMotion ? false : { opacity: 0, y: 36 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.8 }}
+                  transition={{ duration: 0.45, delay: 0.12 + index * 0.05, ease: [0.16, 1, 0.3, 1] }}
+                  className="motionWord accentWord"
+                >
+                  {word}
+                </motion.span>
+                {index < accentWords.length - 1 ? ' ' : ''}
+              </React.Fragment>
+            ))}
+          </span>
+        </>
+      )}
+    </h2>
+  );
 }
 
 function AppIcon({ type }) {
@@ -199,7 +242,7 @@ function Nav() {
 
                 <div className="mobileMenuFooter">
                   <span>🇮🇳 HINDI + ENGLISH</span>
-                  <a href="mailto:hello@gainzope.in">hello@gainzope.in ↗</a>
+                  <a href="mailto:support.gainzope@gmail.com">support.gainzope@gmail.com ↗</a>
                 </div>
               </div>
             </div>
@@ -683,7 +726,7 @@ function SubscribeSection() {
 }
 
 function TrustAndSupport() {
-  return <section className="trustSection"><div className="shell"><Reveal className="trustHead"><div><p className="kicker">11 / RULES & SUPPORT</p><h2>Read the rules.<br /><em>Then earn with confidence.</em></h2></div><p>Keep the important information close: how points work, how spin rewards work and where to get help.</p></Reveal><div className="trustGrid"><Reveal delay={.05}><a href="/privacy.html"><span>01</span><div><h3>Privacy & data</h3><p>See the current website privacy notice and ask privacy questions.</p></div><Arrow /></a></Reveal><Reveal delay={.12}><a href="/terms.html"><span>02</span><div><h3>Reward terms</h3><p>Read points, tokens, referrals, gift cards and recharge reward information.</p></div><Arrow /></a></Reveal><Reveal delay={.19}><a href="/reward-rules.html"><span>03</span><div><h3>Spin rules</h3><p>Check spin participation and reward-selection information before you play.</p></div><Arrow /></a></Reveal><Reveal delay={.26}><a href="mailto:hello@gainzope.in?subject=GAINZOPE%20reward%20support"><span>04</span><div><h3>Reward support</h3><p>Get help with pending points, surveys, tasks, referrals or recharge status.</p></div><Arrow /></a></Reveal></div><Reveal delay={.3}><p className="trustNote">Status updates and reward notifications will come through the app. Hindi and English are supported. Need a hand? Email <a href="mailto:hello@gainzope.in">hello@gainzope.in</a>.</p></Reveal></div></section>;
+  return <section className="trustSection"><div className="shell"><Reveal className="trustHead"><div><p className="kicker">11 / RULES & SUPPORT</p><h2>Read the rules.<br /><em>Then earn with confidence.</em></h2></div><p>Keep the important information close: how points work, how spin rewards work and where to get help.</p></Reveal><div className="trustGrid"><Reveal delay={.05}><a href="/privacy.html"><span>01</span><div><h3>Privacy & data</h3><p>See the current website privacy notice and ask privacy questions.</p></div><Arrow /></a></Reveal><Reveal delay={.12}><a href="/terms.html"><span>02</span><div><h3>Reward terms</h3><p>Read points, tokens, referrals, gift cards and recharge reward information.</p></div><Arrow /></a></Reveal><Reveal delay={.19}><a href="/reward-rules.html"><span>03</span><div><h3>Spin rules</h3><p>Check spin participation and reward-selection information before you play.</p></div><Arrow /></a></Reveal><Reveal delay={.26}><a href="mailto:support.gainzope@gmail.com?subject=GAINZOPE%20reward%20support"><span>04</span><div><h3>Reward support</h3><p>Get help with pending points, surveys, tasks, referrals or recharge status.</p></div><Arrow /></a></Reveal></div><Reveal delay={.3}><p className="trustNote">Status updates and reward notifications will come through the app. Hindi and English are supported. Need a hand? Email <a href="mailto:support.gainzope@gmail.com">support.gainzope@gmail.com</a>.</p></Reveal></div></section>;
 }
 
 function Download() {
@@ -798,12 +841,12 @@ function Footer() {
           <Logo />
           <p>Earn points. Save on what matters.</p>
           <small>Spin rewards, surveys, tasks, offers, referrals, gift cards and eligible recharge discounts in one upcoming app.</small>
-          <a className="footerContactLink" href="mailto:hello@gainzope.in">
+          <a className="footerContactLink" href="mailto:support.gainzope@gmail.com">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
               <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
               <polyline points="22,6 12,13 2,6" />
             </svg>
-            hello@gainzope.in
+            support.gainzope@gmail.com
           </a>
         </div>
         <div className="footerLinks">
@@ -820,7 +863,7 @@ function Footer() {
           <a href="/terms.html">Reward terms</a>
           <a href="/reward-rules.html">Spin rules</a>
           <a href="/privacy.html">Privacy & data</a>
-          <a href="mailto:hello@gainzope.in?subject=GAINZOPE%20support">Get support</a>
+          <a href="mailto:support.gainzope@gmail.com?subject=GAINZOPE%20support">Get support</a>
         </div>
         <div className="footerSocial">
           <h3>STAY IN THE LOOP</h3>

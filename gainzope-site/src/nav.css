@@ -490,21 +490,24 @@
   color: var(--lime);
 }
 
-@media (max-width: 900px) {
+@media (max-width: 980px) {
   .desktopNav {
-    display: none;
+    display: none !important;
+  }
+  .navActions {
+    display: none !important;
+  }
+  .menuButton {
+    display: flex !important;
+  }
+  .navWrap .nav {
+    height: 68px !important;
   }
 }
 
 @media (max-width: 720px) {
   .navWrap .nav {
-    height: 64px;
-  }
-  .navActions {
-    display: none;
-  }
-  .menuButton {
-    display: flex;
+    height: 64px !important;
   }
 }
 
