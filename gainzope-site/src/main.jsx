@@ -11,34 +11,37 @@ import './product-details.css';
 import './performance.css';
 import './subscribe.css';
 import './mobile.css';
+import AboutPage from './AboutPage.jsx';
+import LegalPage, { pages as legalPages } from './LegalPage.jsx';
 
 const navLinks = [
   ['Home', '#top'],
   ['How it works', '#how'],
   ['Ways to earn', '#earn'],
+  ['About', '/about'],
   ['Rewards', '#rewards'],
   ['FAQ', '#faq']
 ];
 
 const earningWays = [
-  ['01', 'Daily spin', 'Claim your free spin for the day. The app shows the active rules before you play.', 'Spin'],
-  ['02', 'Available surveys', 'Answer CPX Research surveys that match you. A reward is shown before you begin.', 'Survey'],
-  ['03', 'Verified tasks', 'Complete the listed steps. Eligible completions move to your points balance after verification.', 'Task'],
-  ['04', 'Offers worth trying', 'Choose an offer, read its requirements, and track its status in the app.', 'Offer'],
-  ['05', 'Refer a friend', 'Your friend completes their first valid task, then both accounts receive their referral points.', 'Invite']
+  ['01', 'Daily lucky spin', 'Claim your free daily spin resetting at midnight IST. Active streaks and tasks unlock bonus spins.', 'Spin'],
+  ['02', 'Available surveys', 'Answer high-yield CPX Research surveys matched to your profile. Rewards are shown before you begin.', 'Survey'],
+  ['03', 'Verified tasks', 'Complete listed steps and partner offers. Eligible completions move directly to your points balance.', 'Task'],
+  ['04', 'Gift cards & offers', 'Choose an offer or redeem your tokens for brand gift cards like Amazon, Flipkart and Google Play.', 'Offer'],
+  ['05', 'Refer & milestones', 'Get 250 points when your friend finishes their first task, plus huge bonus points at 15, 25 and 50 referrals.', 'Invite']
 ];
 
 const faqs = [
-  ['What is GAINZOPE?', 'GAINZOPE is an upcoming India rewards app. Complete available activities, collect points, convert them to tokens, and use eligible value on mobile recharge or gift cards.'],
-  ['When are points added?', 'Points are added after an activity meets its listed requirement and is verified. Your wallet will show whether an activity is in progress, under review or credited.'],
-  ['How do points convert to tokens?', 'The value rule is simple: 100 points = 1 token. One token gives ₹1 of eligible value, subject to the reward option shown in the app.'],
-  ['Why did I not qualify for a survey?', 'Survey availability and eligibility can vary. Answer honestly and review the survey screen before starting; some screeners do not award points.'],
-  ['How does the daily spin work?', 'Every eligible account gets one free spin per day based on IST. Valid tasks and milestones may unlock bonus spins. The live spin rules will be shown before launch.'],
-  ['When does a referral reward arrive?', 'When your referred friend completes their first valid task, you receive 250 points and your friend receives 150 points. The app will show the referral status.'],
-  ['Can I recharge any number?', 'GAINZOPE is currently for India. Sign in with an Indian mobile number and use eligible tokens only for Indian mobile recharges.'],
-  ['Can I withdraw rewards as cash?', 'GAINZOPE is designed for eligible recharge discounts and gift-card rewards. Cash withdrawal is not available unless the app later shows it as an option.'],
-  ['How will I receive updates?', 'Leave your email in the footer and we will use it for GAINZOPE launch news and important product updates. Hindi and English are supported in the app.'],
-  ['When will the Android app launch?', 'The GAINZOPE Android app is coming soon. Follow the official GAINZOPE channels for launch updates.']
+  ['What is GAINZOPE and how does it work?', 'GAINZOPE is India\'s upcoming premier rewards app. Users earn points by completing daily lucky spins, CPX Research surveys, verified tasks, and reaching referral milestones. Verified points convert to tokens (100 pts = 1 token = ₹1) to get tiered mobile recharge discounts on Jio, Airtel, Vi, and BSNL, or redeem brand gift cards.'],
+  ['How do GAINZOPE points convert to tokens and rupees?', 'The value rule is 100% transparent: 100 points = 1 GAINZOPE token. 1 token gives ₹1 of real redemption value. There are no hidden fees or surprise deductions.'],
+  ['How do VIP Loyalty Tiers and recharge discounts work?', 'As you earn points and participate, your loyalty tier automatically rises: Bronze Level gives a 5% discount on eligible mobile recharges, Silver Level gives 8%, Gold Level gives 12%, and Platinum Level gives up to 15% discount. This percentage discount is combined with your tokens to significantly slash your recharge cost.'],
+  ['Which Indian mobile operators are supported for recharge discounts?', 'GAINZOPE supports all major Indian mobile telecom networks: Reliance Jio, Bharti Airtel, Vodafone Idea (Vi), and BSNL across prepaid plans.'],
+  ['What are referral milestones and how much can I earn?', 'When your invited friend completes their first valid task, you receive 250 points and your friend receives 150 points. In addition, milestone bonuses are unlocked: 15 successful referrals gives +2,000 bonus points, 25 referrals gives +3,500 bonus points, and 50 referrals gives +10,000 bonus points.'],
+  ['How does the daily lucky spin and mystery box work?', 'Every verified GAINZOPE account gets one free lucky spin every single day, resetting at midnight IST. Reaching streaks and completing tasks also awards bonus spins and mystery box drops containing extra points and perks.'],
+  ['How do CPX Research paid surveys work?', 'GAINZOPE connects with CPX Research to offer paid surveys tailored for Indian audiences. You will always see the reward value in points and the estimated survey duration before starting.'],
+  ['Can I redeem points for gift cards like Amazon or Flipkart?', 'Yes! In addition to mobile recharge discounts, GAINZOPE features an active catalogue of digital gift cards, including Amazon Pay vouchers, Flipkart shopping cards, and Google Play recharge codes.'],
+  ['Is GAINZOPE 100% free to join and use?', 'Yes, absolutely free. GAINZOPE does not charge any registration fees, subscriptions, or deposits. You earn rewards strictly through your own time and activity.'],
+  ['When will the GAINZOPE Android app launch on Google Play?', 'The GAINZOPE Android app is coming soon on Google Play for Indian users. Enter your email in our launch alert box to get an instant Day-1 download link as soon as we go live.']
 ];
 
 function Arrow({ down = false }) {
@@ -49,9 +52,19 @@ function Arrow({ down = false }) {
   );
 }
 
-function Logo() {
+function Logo({ onNavigate }) {
   return (
-    <a className="logo" href="#top" aria-label="GAINZOPE home">
+    <a
+      className="logo"
+      href="/"
+      onClick={(e) => {
+        if (onNavigate) {
+          e.preventDefault();
+          onNavigate('/');
+        }
+      }}
+      aria-label="GAINZOPE home"
+    >
       <span className="logoMark">
         <svg viewBox="0 0 24 24" width="22" height="22" fill="none" aria-hidden="true">
           <path d="M12 2L3 7v10l9 5 9-5V7l-9-5z" fill="#10110e" />
@@ -154,6 +167,20 @@ function AppIcon({ type }) {
       <path d="M8 12l3 3 5-6" />
     </svg>
   );
+  if (type === 'Streak') return (
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+    </svg>
+  );
+  if (type === 'Gift') return (
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <polyline points="20 12 20 22 4 22 4 12" />
+      <rect x="2" y="7" width="20" height="5" />
+      <line x1="12" y1="22" x2="12" y2="7" />
+      <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z" />
+      <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z" />
+    </svg>
+  );
   return (
     <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
       <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
@@ -163,20 +190,48 @@ function AppIcon({ type }) {
   );
 }
 
-function Nav() {
+function Nav({ currentPath, onNavigate }) {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   useEffect(() => { const handleScroll = () => setScrolled(window.scrollY > 18); handleScroll(); window.addEventListener('scroll', handleScroll, { passive: true }); return () => window.removeEventListener('scroll', handleScroll); }, []);
+
+  const handleLinkClick = (e, href) => {
+    if (href === '/about') {
+      e.preventDefault();
+      if (onNavigate) onNavigate('/about');
+      setOpen(false);
+      return;
+    }
+    if (currentPath !== '/') {
+      e.preventDefault();
+      if (onNavigate) onNavigate('/');
+      setOpen(false);
+      const hash = href.replace('#', '');
+      setTimeout(() => {
+        if (hash) {
+          const el = document.getElementById(hash);
+          if (el) el.scrollIntoView({ behavior: 'smooth' });
+        } else {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      }, 60);
+    } else {
+      setOpen(false);
+    }
+  };
+
   return (
     <header className={`navWrap ${scrolled ? 'isScrolled' : ''}`}>
       <div className="nav shell">
-        <Logo />
+        <Logo onNavigate={onNavigate} />
         <nav className="desktopNav" aria-label="Primary navigation">
-          {navLinks.map(([label, href]) => <a key={href} href={href}>{label}</a>)}
+          {navLinks.map(([label, href]) => (
+            <a key={href} href={href} onClick={(e) => handleLinkClick(e, href)}>{label}</a>
+          ))}
         </nav>
         <div className="navActions">
-          <a className="navAlertBtn" href="#subscribe"><span className="pulseDot" /> Get Launch Alert</a>
-          <a className="navCta" href="#download">App coming soon <Arrow /></a>
+          <a className="navAlertBtn" href="/#subscribe" onClick={(e) => handleLinkClick(e, '#subscribe')}><span className="pulseDot" /> Get Launch Alert</a>
+          <a className="navCta" href="/#download" onClick={(e) => handleLinkClick(e, '#download')}>App coming soon <Arrow /></a>
         </div>
         <button
           className={`menuButton ${open ? 'open' : ''}`}
@@ -200,7 +255,7 @@ function Nav() {
             aria-label="Mobile navigation"
           >
             <div className="mobileMenuInner">
-              <a className="mobileAlertLink" href="#subscribe" onClick={() => setOpen(false)}>
+              <a className="mobileAlertLink" href="/#subscribe" onClick={(e) => handleLinkClick(e, '#subscribe')}>
                 <div className="mobileAlertLeft">
                   <div className="mobileAlertBadge">
                     <span className="mobileAlertDot" />
@@ -217,7 +272,7 @@ function Nav() {
                   <motion.a
                     key={href}
                     href={href}
-                    onClick={() => setOpen(false)}
+                    onClick={(e) => handleLinkClick(e, href)}
                     initial={{ opacity: 0, x: -12 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.03 + index * 0.035 }}
@@ -258,7 +313,34 @@ function DemoPhone() {
 }
 
 function Hero() {
-  return <section id="top" className="hero shell"><Reveal className="heroCopy"><p className="kicker"><span className="liveDot" /> THE GAINZOPE REWARDS APP</p><h1>Earn points.<br /><em>Save on recharge.</em></h1><p className="heroText">Take part in available surveys, tasks, offers, spins and referrals. Convert every 100 points into 1 token, then use eligible tokens to lower your next mobile recharge.</p><div className="heroActions"><a className="primaryButton" href="#how">See how it works <Arrow /></a><a className="textButton" href="#earn">Explore ways to earn <Arrow down /></a></div><p className="heroFinePrint">Coming soon for India. Activities, reward values and availability can change.</p></Reveal><div className="heroVisual"><div className="orbit orbitOne" /><div className="orbit orbitTwo" /><motion.div className="heroNote noteOne" animate={{ y: [0, -8, 0] }} transition={{ duration: 4.4, repeat: Infinity, ease: 'easeInOut' }}><span>01</span><b>COMPLETE</b><small>Choose an available activity</small></motion.div><motion.div className="heroNote noteTwo" animate={{ y: [0, 8, 0] }} transition={{ duration: 4.8, repeat: Infinity, ease: 'easeInOut', delay: .3 }}><span>02</span><b>REDEEM</b><small>Use tokens on eligible rewards</small></motion.div><DemoPhone /><p className="demoCaption">APP PREVIEW <span>SAMPLE BALANCE</span></p></div></section>;
+  return (
+    <section id="top" className="hero shell">
+      <Reveal className="heroCopy">
+        <p className="kicker"><span className="liveDot" /> THE GAINZOPE REWARDS APP</p>
+        <h1>Earn points.<br /><em>Save on recharge.</em></h1>
+        <p className="heroText">
+          Take part in available daily spins, CPX surveys, verified tasks and referral milestones. Convert every 100 points into 1 token (₹1), level up to Bronze for a 5% discount, and save on your next mobile recharge.
+        </p>
+        <div className="heroActions">
+          <a className="primaryButton" href="#how">See how it works <Arrow /></a>
+          <a className="textButton" href="#earn">Explore ways to earn <Arrow down /></a>
+        </div>
+        <p className="heroFinePrint">100% Free · Made for India · Bronze level 5% discount &amp; tokens on Jio, Airtel, Vi and BSNL.</p>
+      </Reveal>
+      <div className="heroVisual">
+        <div className="orbit orbitOne" />
+        <div className="orbit orbitTwo" />
+        <motion.div className="heroNote noteOne" animate={{ y: [0, -8, 0] }} transition={{ duration: 4.4, repeat: Infinity, ease: 'easeInOut' }}>
+          <span>01</span><b>COMPLETE</b><small>Choose an available activity</small>
+        </motion.div>
+        <motion.div className="heroNote noteTwo" animate={{ y: [0, 8, 0] }} transition={{ duration: 4.8, repeat: Infinity, ease: 'easeInOut', delay: .3 }}>
+          <span>02</span><b>REDEEM</b><small>Use tokens on eligible rewards</small>
+        </motion.div>
+        <DemoPhone />
+        <p className="demoCaption">APP PREVIEW <span>SAMPLE BALANCE</span></p>
+      </div>
+    </section>
+  );
 }
 
 function TrustStrip() {
@@ -273,6 +355,38 @@ function Journey() {
 function EarnWays() {
   return <section id="earn" className="earnSection"><div className="shell"><Reveal className="sectionIntro splitIntro"><div><p className="kicker">02 / WAYS TO EARN</p><MotionTitle title="Pick an activity." accent="Make it count." /></div><p>What you see can change by day and account. The app only shows activities that are currently open, along with the steps and reward details you need before starting.</p></Reveal><div className="earnGrid">{earningWays.map(([number, title, text, type], index) => <Reveal key={title} delay={index * .06}><motion.article className="earnCard" whileHover={{ y: -8 }} transition={{ type: 'spring', stiffness: 280, damping: 20 }}><div className="earnCardTop"><span>{number}</span><span className="earnIcon"><AppIcon type={type} /></span></div><h3>{title}</h3><p>{text}</p><div className="earnCardBottom"><small>CHECK IN APP</small><Arrow /></div></motion.article></Reveal>)}</div></div></section>;
 }
+
+function HomeAboutIntro({ onNavigateAbout }) {
+  return (
+    <section className="homeAboutIntro shell">
+      <Reveal>
+        <div className="homeAboutCard">
+          <div className="homeAboutContent">
+            <p className="kicker">ABOUT GAINZOPE</p>
+            <h2>Built for transparent rewards. <em>Not fake coins.</em></h2>
+            <p className="desc">
+              We started GAINZOPE to solve one real problem: rising mobile recharge bills in India. See why we built a fixed 100 points = ₹1 token model and read our public product roadmap.
+            </p>
+          </div>
+          <a
+            href="/about"
+            onClick={(e) => {
+              if (onNavigateAbout) {
+                e.preventDefault();
+                onNavigateAbout();
+              }
+            }}
+            className="homeAboutBtn"
+          >
+            Read Our Story <Arrow />
+          </a>
+        </div>
+      </Reveal>
+    </section>
+  );
+}
+
+
 
 function ReferralRewards() {
   const milestones = [['15', '2,000 points'], ['25', '3,500 points'], ['50', '10,000 points']];
@@ -311,17 +425,19 @@ function SpinAndRecharge() {
         <a href="/reward-rules.html">Read spin rules <Arrow /></a>
       </Reveal>
       <Reveal delay={.12} className="rechargeCard">
-        <p className="kicker">05 / RECHARGE WITH TOKENS</p>
+        <p className="kicker">05 / RECHARGE DISCOUNTS &amp; TOKENS</p>
         <h2>Make your next<br /><em>recharge cost less.</em></h2>
-        <p>Sign in with an Indian mobile number, earn points, convert them in your wallet, and apply eligible tokens to an Indian mobile recharge.</p>
+        <p>Sign in with an Indian mobile number, unlock Bronze level for a 5% discount, and apply your verified tokens on Jio, Airtel, Vi or BSNL.</p>
         <div className="rechargeExample">
-          <div><small>RECHARGE AMOUNT</small><b>{'\u20B9'}299</b></div>
+          <div><small>RECHARGE PLAN</small><b>{'\u20B9'}299</b></div>
+          <span>−</span>
+          <div><small>BRONZE 5% OFF</small><b>{'\u20B9'}15</b></div>
           <span>−</span>
           <div><small>20 TOKENS</small><b>{'\u20B9'}20 OFF</b></div>
           <span>=</span>
-          <div className="finalRecharge"><small>YOU PAY</small><b>{'\u20B9'}279</b></div>
+          <div className="finalRecharge"><small>YOU PAY</small><b>{'\u20B9'}264</b></div>
         </div>
-        <p className="rechargeFine">Example only. The app shows the available discount and final amount before you pay.</p>
+        <p className="rechargeFine">Example: Bronze level 5% off + tokens deducted before payment. Silver gives 8%, Gold 12%, Platinum 15%.</p>
       </Reveal>
     </section>
   );
@@ -372,9 +488,9 @@ function ValueExchange() {
             </div>
           </motion.div>
           <div className="valueDestinations">
-            <span>Recharge discounts</span>
-            <span>Gift cards</span>
-            <span>More rewards over time</span>
+            <span>Recharge discounts (Jio · Airtel · Vi · BSNL)</span>
+            <span>Gift cards (Amazon · Flipkart · Google Play)</span>
+            <span>Tier discounts (Bronze 5% up to 15%)</span>
           </div>
         </Reveal>
       </div>
@@ -493,6 +609,46 @@ function WhyChoose() {
   );
 }
 
+async function registerWaitlistEmail(email, source) {
+  const cleanEmail = email.trim();
+  const baseUrl = (import.meta.env.VITE_API_BASE_URL || '').replace(/\/$/, '');
+
+  if (baseUrl) {
+    try {
+      const response = await fetch(`${baseUrl}/api/waitlist`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: cleanEmail, source })
+      });
+      const data = await response.json().catch(() => ({}));
+      if (response.ok) {
+        return {
+          success: true,
+          message: data.alreadyRegistered
+            ? "You are already registered. We will send you an email the moment GAINZOPE goes live."
+            : "Thank you! You are on the official launch list. You will receive an instant email with the Google Play link as soon as GAINZOPE launches."
+        };
+      }
+    } catch {
+      // API unreachable, gracefully fall back to local storage
+    }
+  }
+
+  // Pre-launch / CDN offline fallback
+  try {
+    const list = JSON.parse(localStorage.getItem('gainzope_waitlist_subscribers') || '[]');
+    if (!list.some(item => item.email.toLowerCase() === cleanEmail.toLowerCase())) {
+      list.push({ email: cleanEmail, source, timestamp: new Date().toISOString() });
+      localStorage.setItem('gainzope_waitlist_subscribers', JSON.stringify(list));
+    }
+  } catch {}
+
+  return {
+    success: true,
+    message: "Thank you! You are on the official launch list. You will receive an instant email with the Google Play link as soon as GAINZOPE launches."
+  };
+}
+
 function SubscribeSection() {
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState('idle');
@@ -500,7 +656,7 @@ function SubscribeSection() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!email || !email.includes('@')) {
+    if (!email || !email.includes('@') || email.length < 5) {
       setStatus('error');
       setMessage('Please enter a valid email address.');
       return;
@@ -508,19 +664,9 @@ function SubscribeSection() {
     setStatus('loading');
     setMessage('');
     try {
-      const baseUrl = (import.meta.env.VITE_API_BASE_URL || 'http://localhost:4000').replace(/\/$/, '');
-      const response = await fetch(`${baseUrl}/api/waitlist`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: email.trim(), source: 'launch_alert' })
-      });
-      const data = await response.json().catch(() => ({}));
-      if (!response.ok) throw new Error(data.error || 'Unable to register right now. Please try again.');
-
+      const result = await registerWaitlistEmail(email, 'launch_alert');
       setStatus('success');
-      setMessage(data.alreadyRegistered
-        ? "You are already registered. We will send you an email the moment GAINZOPE goes live."
-        : 'Thank you! You are on the official launch list. You will receive an instant email with the Google Play link as soon as GAINZOPE launches.');
+      setMessage(result.message);
       setEmail('');
     } catch (err) {
       setStatus('error');
@@ -726,7 +872,7 @@ function SubscribeSection() {
 }
 
 function TrustAndSupport() {
-  return <section className="trustSection"><div className="shell"><Reveal className="trustHead"><div><p className="kicker">11 / RULES & SUPPORT</p><h2>Read the rules.<br /><em>Then earn with confidence.</em></h2></div><p>Keep the important information close: how points work, how spin rewards work and where to get help.</p></Reveal><div className="trustGrid"><Reveal delay={.05}><a href="/privacy.html"><span>01</span><div><h3>Privacy & data</h3><p>See the current website privacy notice and ask privacy questions.</p></div><Arrow /></a></Reveal><Reveal delay={.12}><a href="/terms.html"><span>02</span><div><h3>Reward terms</h3><p>Read points, tokens, referrals, gift cards and recharge reward information.</p></div><Arrow /></a></Reveal><Reveal delay={.19}><a href="/reward-rules.html"><span>03</span><div><h3>Spin rules</h3><p>Check spin participation and reward-selection information before you play.</p></div><Arrow /></a></Reveal><Reveal delay={.26}><a href="mailto:support.gainzope@gmail.com?subject=GAINZOPE%20reward%20support"><span>04</span><div><h3>Reward support</h3><p>Get help with pending points, surveys, tasks, referrals or recharge status.</p></div><Arrow /></a></Reveal></div><Reveal delay={.3}><p className="trustNote">Status updates and reward notifications will come through the app. Hindi and English are supported. Need a hand? Email <a href="mailto:support.gainzope@gmail.com">support.gainzope@gmail.com</a>.</p></Reveal></div></section>;
+  return <section className="trustSection"><div className="shell"><Reveal className="trustHead"><div><p className="kicker">11 / RULES & SUPPORT</p><h2>Read the rules.<br /><em>Then earn with confidence.</em></h2></div><p>Keep the important information close: how points work, how spin rewards work and where to get help.</p></Reveal><div className="trustGrid"><Reveal delay={.05}><a href="/privacy"><span>01</span><div><h3>Privacy Policy</h3><p>Learn how information may be handled across GAINZOPE services.</p></div><Arrow /></a></Reveal><Reveal delay={.12}><a href="/terms"><span>02</span><div><h3>Terms & conditions</h3><p>Read the rules for using GAINZOPE services.</p></div><Arrow /></a></Reveal><Reveal delay={.19}><a href="/reward-terms"><span>03</span><div><h3>Reward terms</h3><p>Read points, tokens, referrals and eligible redemption rules.</p></div><Arrow /></a></Reveal><Reveal delay={.26}><a href="/support"><span>04</span><div><h3>Support</h3><p>Get help with accounts, rewards, recharge or payment status.</p></div><Arrow /></a></Reveal></div><Reveal delay={.3}><p className="trustNote">Need a hand? Email <a href="mailto:support.gainzope@gmail.com">support.gainzope@gmail.com</a>.</p></Reveal></div></section>;
 }
 
 function Download() {
@@ -801,7 +947,7 @@ function SocialIcon({ type }) {
   );
 }
 
-function Footer() {
+function Footer({ onNavigate }) {
   const socialLinks = [
     ['instagram', 'Instagram', 'https://www.instagram.com/gainzope/'],
     ['youtube', 'YouTube', 'https://www.youtube.com/@gainzope'],
@@ -810,20 +956,45 @@ function Footer() {
   ];
   const [email, setEmail] = useState('');
   const [emailMessage, setEmailMessage] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const joinUpdates = async (event) => {
     event.preventDefault();
+    if (!email || !email.includes('@') || email.length < 5) {
+      setEmailMessage('Please enter a valid email address.');
+      return;
+    }
     setEmailMessage('');
+    setIsSubmitting(true);
     try {
-      const response = await fetch(`${(import.meta.env.VITE_API_BASE_URL || 'http://localhost:4000').replace(/\/$/, '')}/api/waitlist`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, source: 'website_footer' })
-      });
-      if (!response.ok) throw new Error('Please try again in a moment.');
+      const result = await registerWaitlistEmail(email, 'website_footer');
       setEmail('');
-      setEmailMessage('✓ You are on the update list! Launch details will arrive in your inbox.');
-    } catch (error) { setEmailMessage(error.message); }
+      setEmailMessage(result.message);
+    } catch (error) {
+      setEmailMessage(error.message || 'Please try again in a moment.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
+
+  const handleFooterLink = (e, href) => {
+    if (href === '/about') {
+      e.preventDefault();
+      if (onNavigate) onNavigate('/about');
+      return;
+    }
+    if (window.location.pathname !== '/') {
+      if (href.startsWith('#')) {
+        e.preventDefault();
+        if (onNavigate) onNavigate('/');
+        const hash = href.replace('#', '');
+        setTimeout(() => {
+          const el = document.getElementById(hash);
+          if (el) el.scrollIntoView({ behavior: 'smooth' });
+        }, 60);
+      }
+    }
+  };
+
   return (
     <footer className="siteFooter">
       <div className="shell footerLead">
@@ -833,12 +1004,12 @@ function Footer() {
         </div>
         <div className="footerLeadSide">
           <p>Spin, answer, complete, refer and turn your points into rewards you can actually use.</p>
-          <a className="footerAction" href="#how">See how it works <Arrow /></a>
+          <a className="footerAction" href="#how" onClick={(e) => handleFooterLink(e, '#how')}>See how it works <Arrow /></a>
         </div>
       </div>
       <div className="shell footerGrid">
         <div className="footerBrand">
-          <Logo />
+          <Logo onNavigate={onNavigate} />
           <p>Earn points. Save on what matters.</p>
           <small>Spin rewards, surveys, tasks, offers, referrals, gift cards and eligible recharge discounts in one upcoming app.</small>
           <a className="footerContactLink" href="mailto:support.gainzope@gmail.com">
@@ -851,19 +1022,23 @@ function Footer() {
         </div>
         <div className="footerLinks">
           <h3>EXPLORE</h3>
-          <a href="#how">How it works</a>
-          <a href="#earn">Ways to earn</a>
-          <a href="#rewards">Your wallet</a>
-          <a href="#subscribe">Launch alerts</a>
-          <a href="#download">App updates</a>
+          <a href="#how" onClick={(e) => handleFooterLink(e, '#how')}>How it works</a>
+          <a href="#earn" onClick={(e) => handleFooterLink(e, '#earn')}>Ways to earn</a>
+          <a href="/about" onClick={(e) => handleFooterLink(e, '/about')}>About our mission</a>
+          <a href="#rewards" onClick={(e) => handleFooterLink(e, '#rewards')}>Your wallet</a>
+          <a href="#subscribe" onClick={(e) => handleFooterLink(e, '#subscribe')}>Launch alerts</a>
+          <a href="#download" onClick={(e) => handleFooterLink(e, '#download')}>App updates</a>
         </div>
         <div className="footerLinks">
           <h3>HELP & RULES</h3>
-          <a href="#faq">Frequently asked</a>
-          <a href="/terms.html">Reward terms</a>
-          <a href="/reward-rules.html">Spin rules</a>
-          <a href="/privacy.html">Privacy & data</a>
-          <a href="mailto:support.gainzope@gmail.com?subject=GAINZOPE%20support">Get support</a>
+          <a href="#faq" onClick={(e) => handleFooterLink(e, '#faq')}>Frequently asked</a>
+          <a href="/privacy">Privacy Policy</a>
+          <a href="/terms">Terms &amp; Conditions</a>
+          <a href="/reward-terms">Reward Terms</a>
+          <a href="/spin-rules">Spin &amp; Fair-Play Rules</a>
+          <a href="/refund-cancellation">Refund &amp; Cancellation</a>
+          <a href="/support">Support</a>
+          <a href="/account-deletion">Account Deletion</a>
         </div>
         <div className="footerSocial">
           <h3>STAY IN THE LOOP</h3>
@@ -871,7 +1046,7 @@ function Footer() {
           <form className="footerEmailForm" onSubmit={joinUpdates}>
             <label className="srOnly" htmlFor="footer-email">Email address</label>
             <input id="footer-email" type="email" value={email} onChange={(event) => setEmail(event.target.value)} placeholder="Enter your email address" required />
-            <button type="submit">Join updates <Arrow /></button>
+            <button type="submit" disabled={isSubmitting}>{isSubmitting ? 'Joining...' : 'Join updates'} <Arrow /></button>
           </form>
           {emailMessage && <small className="footerPushMessage" role="status">{emailMessage}</small>}
           <div className="footerSocialTitle">CONNECT WITH GAINZOPE</div>
@@ -945,6 +1120,9 @@ function FAQ() {
 
 function trackVisitor() {
   try {
+    const baseUrl = (import.meta.env.VITE_API_BASE_URL || '').replace(/\/$/, '');
+    if (!baseUrl) return; // Silent no-op if no custom analytics endpoint is configured
+
     let sessionId = sessionStorage.getItem('gainzope_sid');
     if (!sessionId) {
       sessionId = 'gz_' + Math.random().toString(36).substring(2, 12) + Date.now().toString(36);
@@ -952,7 +1130,6 @@ function trackVisitor() {
     }
     const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     const device = isMobile ? 'mobile' : 'desktop';
-    const baseUrl = (import.meta.env.VITE_API_BASE_URL || 'http://localhost:4000').replace(/\/$/, '');
 
     fetch(`${baseUrl}/api/analytics/visit`, {
       method: 'POST',
@@ -969,10 +1146,68 @@ function trackVisitor() {
 }
 
 function App() {
+  const [currentPath, setCurrentPath] = useState(() => window.location.pathname);
+
   useEffect(() => {
     trackVisitor();
+    const handlePopState = () => setCurrentPath(window.location.pathname);
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
   }, []);
 
-  return <><Nav /><main><Hero /><TrustStrip /><Journey /><EarnWays /><ReferralRewards /><SpinAndRecharge /><ValueExchange /><RewardDestinations /><RewardPreview /><Clarity /><WhyChoose /><TrustAndSupport /><SubscribeSection /><Download /><FAQ /></main><Footer /></>;
+  const navigateTo = (path) => {
+    window.history.pushState({}, '', path);
+    setCurrentPath(path);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const legacyPaths = {
+    '/privacy.html': '/privacy',
+    '/terms.html': '/reward-terms',
+    '/reward-rules.html': '/spin-rules'
+  };
+  const routePath = legacyPaths[currentPath] || currentPath;
+  const isAbout = routePath === '/about' || routePath === '/about.html';
+  const isLegal = Boolean(legalPages[routePath]);
+
+  return (
+    <>
+      <Nav currentPath={currentPath} onNavigate={navigateTo} />
+      <main>
+        {isAbout ? (
+          <AboutPage onBackToHome={() => navigateTo('/')} />
+        ) : isLegal ? (
+          <LegalPage path={routePath} />
+        ) : (
+          <>
+            <Hero />
+            <TrustStrip />
+            <Journey />
+            <EarnWays />
+            <HomeAboutIntro onNavigateAbout={() => navigateTo('/about')} />
+            <ReferralRewards />
+            <SpinAndRecharge />
+            <ValueExchange />
+            <RewardDestinations />
+            <RewardPreview />
+            <Clarity />
+            <WhyChoose />
+            <TrustAndSupport />
+            <SubscribeSection />
+            <Download />
+            <FAQ />
+          </>
+        )}
+      </main>
+      <Footer onNavigate={navigateTo} />
+    </>
+  );
 }
-createRoot(document.getElementById('root')).render(<App />);
+
+const rootEl = document.getElementById('root');
+if (rootEl) {
+  if (!rootEl._reactRoot) {
+    rootEl._reactRoot = createRoot(rootEl);
+  }
+  rootEl._reactRoot.render(<App />);
+}

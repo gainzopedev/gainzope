@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0a0b08" />
+      <stop offset="50%" stop-color="#12140e" />
+      <stop offset="100%" stop-color="#0c0e09" />
+    </linearGradient>
+    <linearGradient id="limeGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#d9ff38" />
+      <stop offset="100%" stop-color="#a4dc00" />
+    </linearGradient>
+    <radialGradient id="glowTopRight" cx="950" cy="150" r="450" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#c8ff00" stop-opacity="0.18" />
+      <stop offset="100%" stop-color="#c8ff00" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="glowBottomLeft" cx="200" cy="500" r="400" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#c8ff00" stop-opacity="0.12" />
+      <stop offset="100%" stop-color="#c8ff00" stop-opacity="0" />
+    </radialGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(200, 255, 0, 0.04)" stroke-width="1" />
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bgGrad)" />
+  <rect width="1200" height="630" fill="url(#grid)" />
+  <circle cx="950" cy="150" r="450" fill="url(#glowTopRight)" />
+  <circle cx="200" cy="500" r="400" fill="url(#glowBottomLeft)" />
+
+  <!-- Outer Border -->
+  <rect x="24" y="24" width="1152" height="582" rx="28" fill="none" stroke="rgba(200, 255, 0, 0.25)" stroke-width="2" />
+
+  <!-- Header Badge -->
+  <g transform="translate(80, 75)">
+    <rect width="360" height="44" rx="22" fill="rgba(200, 255, 0, 0.12)" stroke="rgba(200, 255, 0, 0.35)" stroke-width="1.5" />
+    <circle cx="24" cy="22" r="6" fill="#c8ff00" />
+    <text x="44" y="28" fill="#c8ff00" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" letter-spacing="2">INDIA'S PREMIER REWARDS APP</text>
+  </g>
+
+  <!-- Logo Mark + Brand -->
+  <g transform="translate(80, 150)">
+    <rect width="56" height="56" rx="14" fill="#c8ff00" />
+    <path d="M28 14 L42 22 V38 L28 46 L14 38 V22 Z" fill="#10110e" />
+    <path d="M33 26 H24 A5 5 0 0 0 19 31 A5 5 0 0 0 24 36 H33 V31 H28" stroke="#c8ff00" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+    <text x="74" y="42" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="38" font-weight="900" letter-spacing="3">GAINZOPE</text>
+  </g>
+
+  <!-- Main Headline -->
+  <text x="80" y="275" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="52" font-weight="800">
+    Earn Points. Daily Spins.
+  </text>
+  <text x="80" y="340" fill="url(#limeGrad)" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="52" font-weight="800">
+    Save On Mobile Recharge.
+  </text>
+
+  <!-- Subheadline -->
+  <text x="80" y="405" fill="#a0a599" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="22" font-weight="400">
+    Complete tasks, CPX surveys, lucky spins &amp; referral milestones.
+  </text>
+  <text x="80" y="440" fill="#a0a599" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="22" font-weight="400">
+    Convert 100 points = 1 token (₹1) and enjoy tiered recharge discounts!
+  </text>
+
+  <!-- Key Badges Strip -->
+  <g transform="translate(80, 490)">
+    <!-- Badge 1: 100 pts = 1 token -->
+    <rect x="0" y="0" width="235" height="52" rx="14" fill="rgba(255, 255, 255, 0.05)" stroke="rgba(200, 255, 0, 0.4)" stroke-width="1.5" />
+    <text x="20" y="32" fill="#c8ff00" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="700">100 PTS = 1 TOKEN (₹1)</text>
+
+    <!-- Badge 2: Bronze 5% Discount -->
+    <rect x="250" y="0" width="250" height="52" rx="14" fill="rgba(200, 255, 0, 0.15)" stroke="#c8ff00" stroke-width="1.5" />
+    <text x="270" y="32" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="700">BRONZE TIER: 5% OFF</text>
+
+    <!-- Badge 3: Jio, Airtel, Vi, BSNL -->
+    <rect x="515" y="0" width="220" height="52" rx="14" fill="rgba(255, 255, 255, 0.05)" stroke="rgba(255, 255, 255, 0.15)" stroke-width="1.5" />
+    <text x="535" y="32" fill="#e2e5db" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="600">JIO · AIRTEL · VI · BSNL</text>
+  </g>
+
+  <!-- Right Visual / Phone Card Showcase -->
+  <g transform="translate(820, 110)">
+    <!-- Glow behind card -->
+    <rect x="-10" y="-10" width="310" height="440" rx="36" fill="rgba(200, 255, 0, 0.08)" />
+
+    <!-- Phone Mockup Container -->
+    <rect x="0" y="0" width="290" height="420" rx="32" fill="#141611" stroke="rgba(200, 255, 0, 0.35)" stroke-width="2.5" />
+
+    <!-- Phone Top Status -->
+    <circle cx="145" cy="18" r="4" fill="#2d3126" />
+    <text x="24" y="44" fill="#a0a599" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" letter-spacing="1">GAINZOPE WALLET</text>
+    <text x="225" y="44" fill="#c8ff00" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700">LIVE</text>
+
+    <!-- Balance Card inside Phone -->
+    <rect x="20" y="60" width="250" height="110" rx="18" fill="#1c1f17" stroke="rgba(200, 255, 0, 0.2)" stroke-width="1.5" />
+    <text x="36" y="86" fill="#8d9482" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" letter-spacing="1">YOUR POINTS BALANCE</text>
+    <text x="36" y="126" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="32" font-weight="900">2,500 <tspan fill="#c8ff00" font-size="18">PTS</tspan></text>
+    <text x="36" y="152" fill="#c8ff00" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="600">= 25 GAINZOPE TOKENS (₹25)</text>
+
+    <!-- Tier Status Pill -->
+    <rect x="20" y="186" width="250" height="60" rx="14" fill="rgba(200, 255, 0, 0.1)" stroke="rgba(200, 255, 0, 0.35)" stroke-width="1.5" />
+    <text x="36" y="210" fill="#c8ff00" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="800" letter-spacing="1">CURRENT LEVEL: BRONZE</text>
+    <text x="36" y="232" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700">5% Flat Recharge Discount Unlocked</text>
+
+    <!-- Recharge Savings Example -->
+    <rect x="20" y="260" width="250" height="135" rx="18" fill="#171913" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1" />
+    <text x="36" y="284" fill="#8d9482" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700">SAMPLE RECHARGE SAVINGS</text>
+
+    <text x="36" y="310" fill="#a0a599" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13">Plan: ₹299 Jio / Airtel</text>
+    <text x="36" y="332" fill="#c8ff00" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13">Bronze 5% Off + 25 Tokens: -₹40</text>
+    <line x1="36" y1="344" x2="250" y2="344" stroke="rgba(255,255,255,0.1)" stroke-width="1" />
+    <text x="36" y="372" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="800">You Pay: <tspan fill="#c8ff00" font-size="20">₹259</tspan></text>
+  </g>
+</svg>

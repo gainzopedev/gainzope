@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en-IN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GAINZOPE | Page Redirect</title>
+  <script>
+    // Single Page App redirect for static hosts
+    var path = window.location.pathname;
+    if (path === '/about' || path === '/about/') {
+      window.location.replace('/about');
+    } else {
+      window.location.replace('/');
+    }
+  </script>
+</head>
+<body style="margin:0;min-height:100vh;background:#10110e;color:#f5f4ef;font-family:sans-serif;display:grid;place-items:center;text-align:center;">
+  <div>
+    <h1 style="font-size:2rem;margin-bottom:0.5rem;">Redirecting to GAINZOPE...</h1>
+    <p style="color:#aeb2a7;">If you are not redirected automatically, <a href="/" style="color:#c8ff00;">click here to return to Home</a>.</p>
+  </div>
+</body>
+</html>

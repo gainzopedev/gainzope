@@ -490,7 +490,28 @@
   color: var(--lime);
 }
 
-@media (max-width: 980px) {
+@media (min-width: 1121px) and (max-width: 1240px) {
+  .desktopNav {
+    gap: 12px;
+  }
+  .desktopNav a {
+    padding: 6px 10px;
+    font-size: 13px;
+  }
+  .navActions {
+    gap: 8px;
+  }
+  .navAlertBtn {
+    padding: 8px 12px;
+    font-size: 11px;
+  }
+  .navCta {
+    padding: 8px 12px;
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 1120px) {
   .desktopNav {
     display: none !important;
   }

@@ -87,12 +87,8 @@ body {
 /* ==========================================================================
    1. TABLETS & SMALL LAPTOPS (<= 980px)
    ========================================================================== */
-@media (max-width: 980px) {
-  .shell {
-    width: min(100% - 48px, 920px);
-  }
-
-  /* Navigation Bar */
+@media (max-width: 1120px) {
+  /* Navigation Bar - switch to drawer before 1024px overflow */
   .desktopNav {
     display: none !important;
   }
@@ -107,6 +103,12 @@ body {
 
   .navWrap .nav {
     height: 68px !important;
+  }
+}
+
+@media (max-width: 980px) {
+  .shell {
+    width: min(100% - 48px, 920px);
   }
 
   /* Hero Section */

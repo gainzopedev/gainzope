@@ -1,9 +1,20 @@
 {
-  "name": "GAINZOPE",
+  "name": "GAINZOPE - Rewards & Mobile Recharge App",
   "short_name": "GAINZOPE",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#f5f4ee",
+  "orientation": "portrait",
+  "background_color": "#10110e",
   "theme_color": "#c8ff00",
-  "description": "A rewards platform for earning points and unlocking mobile recharge savings."
+  "description": "India's premier rewards platform. Earn points with tasks, surveys, spins and referral milestones. Convert 100 points into 1 token (₹1) for tiered discounts on mobile recharges.",
+  "categories": ["finance", "lifestyle", "rewards"],
+  "lang": "en-IN",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
 }
